@@ -1,0 +1,12 @@
+POST http://localhost:3001/users/create
+Content-Type: application/json
+
+{
+  "firstname": "Chandan",
+  "lastname": "Singh",  
+  "email": "chandanbadhan88@gmail.com",
+  "password": "Cb@131002",
+  "role": "admin",
+  "phone": "9501263632",
+  "profileImage": "https://example.com/profile.jpg"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "it is a campus los",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "staging": "cross-env NODE_ENV=staging nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harjotkataria1/SmartcampusLostandFoundManagementsystem.git"
+  },
+  "author": "harjot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harjotkataria1/SmartcampusLostandFoundManagementsystem/issues"
+  },
+  "homepage": "https://github.com/harjotkataria1/SmartcampusLostandFoundManagementsystem#readme",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "express-winston": "^4.2.0",
+    "form-data": "^4.0.6",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.1.1",
+    "mongoose": "^9.4.1",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,9 @@
+PATCH http://localhost:3001/items
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWYzMWI3MmNkNzJkNzc1NmNhMTg3OGYiLCJlbWFpbCI6ImNoYW5kYW5kZWVwOTUwMTJAZ21haWwuY29tIiwiaWF0IjoxNzc3NTQwMDAzLCJleHAiOjE3Nzc2MjY0MDN9.XWYLlT6lHfpAKw26sBSsaDey0UIx6hALqLI4kS7SW7k
+    
+{
+    "id" : "69f31c6ccd72d7756ca18790",
+  "title": "Black Leather armani Wallet"
+
+}

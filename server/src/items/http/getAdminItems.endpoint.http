@@ -1,0 +1,9 @@
+POST http://localhost:3001/getadminitems
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWY5Nzg0ZjU4NjVkMWIwMjY0OGI0ZWIiLCJlbWFpbCI6ImNoYW5kYW5iYWRoYW44OEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzc5NzYwNTgsImV4cCI6MTc3ODA2MjQ1OH0.a5mJMQyukYX86vD7YW-uAn0oyXPB9E_98E69SV-sK_A
+    
+{
+    "page" : "1",
+    "limit" : "10",
+    "order" : "asc"
+}

@@ -1,0 +1,7 @@
+PATCH http://localhost:3001/claims/69f8798c1432773af3a22d9d/approve
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWYzMWI3MmNkNzJkNzc1NmNhMTg3OGYiLCJlbWFpbCI6ImNoYW5kYW5kZWVwOTUwMTJAZ21haWwuY29tIiwiaWF0IjoxNzc4MDQ3NjIxLCJleHAiOjE3NzgxMzQwMjF9.oUeINx5yClAE85wq9CC1kTbg7KBRpn7QxKoWdaq8N3s
+   
+{
+    "reviewNote" : "this is the test review"
+}

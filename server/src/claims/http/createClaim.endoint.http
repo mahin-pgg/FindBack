@@ -1,0 +1,12 @@
+POST http://localhost:3001/claims
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWYzMWI3MmNkNzJkNzc1NmNhMTg3OGYiLCJlbWFpbCI6ImNoYW5kYW5kZWVwOTUwMTJAZ21haWwuY29tIiwiaWF0IjoxNzc4MDQ3NjIxLCJleHAiOjE3NzgxMzQwMjF9.oUeINx5yClAE85wq9CC1kTbg7KBRpn7QxKoWdaq8N3s
+   
+{
+    "itemId" : "69f342637f3f74cb7596e3ae", 
+    "matchId" : "69f43a26186bea6a56d320b4",
+    "message": "I lost my black wallet yesterday near college",
+    "contactInfo": "9999999999",
+    "proofImages": ["url1", "url2"]
+
+}

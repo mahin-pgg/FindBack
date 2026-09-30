@@ -1,0 +1,9 @@
+POST http://localhost:3001/getitems
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWY5Nzg0ZjU4NjVkMWIwMjY0OGI0ZWIiLCJlbWFpbCI6ImNoYW5kYW5iYWRoYW44OEBnbWFpbC5jb20iLCJpYXQiOjE3Nzc5Njk3MzYsImV4cCI6MTc3ODA1NjEzNn0.6EZGFiLF1Ou9rF0mJj_kJvAwBkOcZSBO4BLufFxIkW0
+    
+{
+    "page" : "1",
+    "limit" : "10",
+    "order" : "asc"
+}

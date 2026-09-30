@@ -1,0 +1,18 @@
+POST http://localhost:3001/items
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWY3MzA4NGJhNTk3YjU0ZWJkZWUyYmYiLCJlbWFpbCI6ImNoYW5kYW5kZWVwOTUwMTJAZ21haWwuY29tIiwiaWF0IjoxNzc3ODE2OTIyLCJleHAiOjE3Nzc5MDMzMjJ9.i9lAIt35pUm5d72jTRadM4eoWMZFgsKGm7UaNL6MsJA
+{
+  "title": "Black Leather Wallet",
+  "description": "Lost my black leather wallet near the central library. It contains ID cards and some cash.",
+  "category": "wallet",
+  "type": "found",
+  "location": "Central Library",
+  "date": "2026-04-25T10:30:00.000Z",
+  "imageURL": "https://example.com/images/wallet.jpg",
+  "postedBy": "69f0629761fc8de7435b3594",
+  "keywords": ["wallet", "black", "leather", "id", "cash"],
+  "coordinates": {
+    "lat": 30.9000,
+    "lng": 75.8573
+  }
+}
