@@ -2,11 +2,11 @@ POST http://localhost:3001/users/create
 Content-Type: application/json
 
 {
-  "firstname": "Chandan",
-  "lastname": "Singh",  
-  "email": "chandanbadhan88@gmail.com",
-  "password": "Cb@131002",
+  "firstname": "Abdullah",
+  "lastname": "Mahin",  
+  "email": "mahin@gmail.com",
+  "password": " Mahin@1234",
   "role": "admin",
-  "phone": "9501263632",
+  "phone": "01573863968",
   "profileImage": "https://example.com/profile.jpg"
 }
