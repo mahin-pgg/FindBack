@@ -12,27 +12,12 @@ from PIL import Image
 
 app = Flask(__name__)
 
-
-# ==================================================
-# TEXT MODEL
-# ==================================================
-
 text_model = SentenceTransformer("all-MiniLM-L6-v2")
-
-
-# ==================================================
-# IMAGE MODEL
-# ==================================================
 
 image_model, _, image_preprocess = open_clip.create_model_and_transforms(
     "ViT-B-32",
     pretrained="openai"
 )
-
-
-# ==================================================
-# HEALTH CHECK
-# ==================================================
 
 @app.route("/health", methods=["GET"])
 def health():
@@ -40,11 +25,6 @@ def health():
     return jsonify({
         "status": "AI service is running"
     })
-
-
-# ==================================================
-# TEXT EMBEDDING
-# ==================================================
 
 @app.route("/embedding", methods=["POST"])
 def embedding():
@@ -66,11 +46,6 @@ def embedding():
         "embedding": vector,
         "dimension": len(vector)
     })
-
-
-# ==================================================
-# TEXT SIMILARITY
-# ==================================================
 
 @app.route("/similarity", methods=["POST"])
 def similarity():
@@ -104,15 +79,9 @@ def similarity():
         "similarity": float(score)
     })
 
-
-# ==================================================
-# IMAGE EMBEDDING
-# ==================================================
-
 @app.route("/image-embedding", methods=["POST"])
 def image_embedding():
 
-    # Check whether an image was uploaded
     if "image" not in request.files:
 
         return jsonify({
@@ -122,32 +91,23 @@ def image_embedding():
 
     image_file = request.files["image"]
 
-
-    # Open image
     image = Image.open(
         image_file
     ).convert("RGB")
 
-
-    # Preprocess image
     image_input = image_preprocess(
         image
     ).unsqueeze(0)
 
-
-    # Generate CLIP embedding
     with torch.no_grad():
 
         vector = image_model.encode_image(
             image_input
         )
 
-
-    # Convert tensor to normal Python list
     vector = vector.cpu().numpy()[0]
 
     vector = vector.astype(float).tolist()
-
 
     return jsonify({
 
@@ -156,11 +116,6 @@ def image_embedding():
         "dimension": len(vector)
 
     })
-
-
-# ==================================================
-# START SERVER
-# ==================================================
 
 if __name__ == "__main__":
 
