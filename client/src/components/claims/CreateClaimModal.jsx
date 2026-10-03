@@ -48,7 +48,7 @@ const CreateClaimModal = ({ match, onClose }) => {
           📦 Create Claim
         </h2>
 
-        {/* ITEM INFO */}
+        {/* ITEM INFORMATION */}
         <div className="mb-4 text-sm text-gray-600">
           Claiming:{" "}
           <span className="font-semibold">
