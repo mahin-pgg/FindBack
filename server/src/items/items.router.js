@@ -2,6 +2,7 @@ const express = require("express");
 const { validationResult } = require("express-validator");
 const { StatusCodes } = require("http-status-codes");
 const upload = require("../middleware/upload.middleware");
+const { normalizeImage } = upload;
 const createItemValidator = require("./validators/createItem.validator.js");
 const getItemsValidator = require("./validators/getItem.validator.js");
 const updateItemValidator = require("./validators/updateItem.validator.js");
@@ -9,6 +10,7 @@ const deleteItemValidator = require("./validators/deleteItem.validator.js");
 const authenticateToken = require("../middleware/authenticateToken.middleware.js");
 const itemController = require("./items.controller");
 const getMyItemsValidator = require("./validators/getMyItems.validator.js");
+const requireRole = require("../middleware/requireRole.middleware.js");
 
 const itemRouter = express.Router();
 
@@ -22,7 +24,7 @@ const validate = (req, res, next) => {
 itemRouter.post(
   "/items",
   authenticateToken, 
-  upload.single("image"),             // auth first
+  upload.single("image"), normalizeImage,
   createItemValidator,            // validation
   (req, res) => {
     console.log("Received file:", req.user);
@@ -56,6 +58,7 @@ itemRouter.post(
 itemRouter.post(
   "/getadminitems",
   authenticateToken,
+  requireRole("admin"),
   getItemsValidator,
   (req, res) => {
     const result = validationResult(req);
@@ -78,9 +81,9 @@ itemRouter.post(
 );
 
 itemRouter.patch(
-  "/items",
+  "/items/:id",
   authenticateToken,
-  upload.single("image"),
+  upload.single("image"), normalizeImage,
   updateItemValidator,
   (req, res) => {
     const result = validationResult(req);

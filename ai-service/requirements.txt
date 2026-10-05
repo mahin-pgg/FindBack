@@ -1,0 +1,8 @@
+Flask>=3.0,<4
+gunicorn>=22,<24
+Pillow>=10,<12
+numpy>=1.26
+scikit-learn>=1.4
+sentence-transformers>=3
+open-clip-torch>=2.24
+torch>=2.2

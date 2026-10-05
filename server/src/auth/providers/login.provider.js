@@ -12,12 +12,16 @@ async function loginProvider(req, res) {
      // Get the user from the database
     const user = await getUserByEmail(validatedData.email);
 
+    if (!user || user.isBlocked) {
+      return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Invalid credentials or blocked account." });
+    }
+
     // Compare password to hash
     const result = await bcrypt.compare(validatedData.password, user.password);
 
     if (!result) {
       return res
-        .status(StatusCodes.BAD_REQUEST)
+        .status(StatusCodes.UNAUTHORIZED)
         .json({ message: "Please check your credentials." });
     }
 

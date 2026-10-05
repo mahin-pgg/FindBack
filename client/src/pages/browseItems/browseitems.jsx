@@ -35,7 +35,8 @@ function ItemCard({ item, navigate }) {
       {/* Image or emoji placeholder */}
       {item.imageURL ? (
         <img
-          src={item.imageURL?.replace(/\\/g, "/")}
+          // src={item.imageURL?.replace(/\\/g, "/")}
+          src={`http://127.0.0.1:3001/${item.imageURL?.replace(/\\/g, "/")}`}
           alt={item.title}
           className="w-full h-40 object-cover rounded-xl"
         />

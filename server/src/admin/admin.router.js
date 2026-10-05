@@ -9,6 +9,7 @@ const verifyItemValidator  = require("./validators/verifyItem.validator.js");
 const analyticsOverviewValidator = require("./validators/analyticsOverview.validator.js");
 const { getAdminStats } = require("../services/adminDashboard.service.js");
 const getMyClaimsValidator = require("../claims/validators/getMyClaims.validator.js");
+const requireRole = require("../middleware/requireRole.middleware.js");
 
 const adminRouter = express.Router();
 
@@ -24,6 +25,7 @@ const validate = (req, res, next) => {
 adminRouter.post(
   "/getusers",
   authenticateToken,
+  requireRole("admin"),
   getUsersValidator,
   validate,
   (req, res) => adminController.handleGetUsers(req, res)
@@ -34,6 +36,7 @@ adminRouter.post(
 adminRouter.patch(
   "/items/:id/verify",
   authenticateToken,
+  requireRole("admin"),
   verifyItemValidator,
   validate,
   (req, res) => adminController.handleVerifyItem(req, res)
@@ -43,6 +46,7 @@ adminRouter.patch(
 adminRouter.get(
   "/dashboard",
   authenticateToken,
+  requireRole("admin"),
   getDashboardValidator,
   validate,
   (req, res) => adminController.handleAdminDashboard(req, res)
@@ -51,6 +55,7 @@ adminRouter.get(
 adminRouter.get(
   "/analytics-overview",
   authenticateToken,
+  requireRole("admin"),
   analyticsOverviewValidator,
   validate,
   (req, res) =>
@@ -60,6 +65,7 @@ adminRouter.get(
 adminRouter.get(
   "/claims",
   authenticateToken,
+  requireRole("admin"),
   getMyClaimsValidator,
   validate,
   (req, res) =>

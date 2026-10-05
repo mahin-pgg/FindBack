@@ -11,10 +11,10 @@ const authenticateToken = (req, res, next) => {
       .status(StatusCodes.UNAUTHORIZED)
       .json({ message: "You are not Authorized to perform this request" }); // No token present
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET, { algorithms: ["HS256"] }, (err, user) => {
     if (err)
       return res
-        .status(StatusCodes.FORBIDDEN)
+        .status(StatusCodes.UNAUTHORIZED)
         .json({ message: "Your token is either expired or invalid." });
 
     req.user = user;

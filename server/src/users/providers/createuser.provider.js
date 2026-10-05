@@ -27,7 +27,8 @@ async function createUserProvider(req, res) {
       lastname: validatedData.lastname,
       email: validatedData.email,
       password: hashedPassword,
-      role: validatedData.role || "user",
+      // role: validatedData.role || "user",
+      role: "user",
       phone: validatedData.phone || null,
       profileImage: validatedData.profileImage || null,
     });

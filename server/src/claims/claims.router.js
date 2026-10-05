@@ -6,12 +6,14 @@ const reviewClaimValidator = require("./validators/reviewClaim.validator.js");
 const getMyClaimsValidator = require("./validators/getMyClaims.validator.js")
 const authenticateToken = require("../middleware/authenticateToken.middleware.js");
 const claimController = require("./claims.controller.js")
+const requireRole = require("../middleware/requireRole.middleware.js");
 
 const claimRouter = express.Router();
 
 claimRouter.post(
   "/claims",
-  authenticateToken,              // auth first
+  authenticateToken,
+  requireRole("admin"),
   createClaimValidator,            // validation
   (req, res) => {
     const result = validationResult(req);
@@ -28,7 +30,8 @@ claimRouter.post(
 
 claimRouter.get(
   "/claims/my",
-  authenticateToken,              // auth first
+  authenticateToken,
+  requireRole("admin"),
   getMyClaimsValidator,            // validation
   (req, res) => {
     const result = validationResult(req);

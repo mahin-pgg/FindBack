@@ -16,12 +16,12 @@ async function blockUserProvider(req, res) {
             return res.status(404).json({ message: "user not found" });
         }
 
-        user.isBlocked = true ;
+        user.isBlocked = true;
         await user.save();
 
     return res.status(StatusCodes.OK).json({
-        message: "Match accepted",
-      data: user,
+        message: "User blocked successfully",
+      data: { _id: user._id, firstname: user.firstname, lastname: user.lastname, email: user.email, role: user.role, isBlocked: user.isBlocked },
     });
 
   } catch (error) {

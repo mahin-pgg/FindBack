@@ -159,7 +159,7 @@ const ItemDetail = () => {
                 <div className="lg:w-2/5 shrink-0">
                   {item.imageURL && !imgError ? (
                     <img
-                      src={item.imageURL?.replace(/\\/g, "/")}
+                      src={`http://127.0.0.1:3001/${item.imageURL.replace(/\\/g, "/")}`}
                       alt={item.title}
                       onError={() => setImgError(true)}
                       className="w-full h-64 lg:h-full object-cover"

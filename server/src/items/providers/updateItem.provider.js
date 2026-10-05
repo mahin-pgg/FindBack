@@ -3,6 +3,8 @@ const { matchedData } = require("express-validator");
 const { StatusCodes } = require("http-status-codes");
 const logger = require("../../helpers/winston.helper.js");
 const errorLogger = require("../../helpers/errorLogger.helper.js");
+const fs = require("fs/promises");
+const path = require("path");
 
 async function updateItemProvider(req, res) {
   try {
@@ -10,7 +12,8 @@ async function updateItemProvider(req, res) {
 
     const { lat, lng, keywords, ...rest } = validData;
 
-    const item = await Item.findById(validData.id);
+    const itemId = req.params.id;
+    const item = await Item.findById(itemId);
 
     if (!item) {
       return res.status(StatusCodes.NOT_FOUND).json({
@@ -57,7 +60,11 @@ async function updateItemProvider(req, res) {
 
     // image update (optional)
     if (req.file?.path) {
+      const oldImage = item.imageURL;
       updatePayload.imageURL = req.file.path;
+      if (oldImage && oldImage.startsWith("uploads/")) {
+        await fs.rm(path.join(__dirname, "../../../", oldImage), { force: true });
+      }
     }
 
     // NEVER allow status changes from user
@@ -66,7 +73,7 @@ async function updateItemProvider(req, res) {
     delete updatePayload.verifiedBy;
 
     const updatedItem = await Item.findByIdAndUpdate(
-      req.params.id,
+      itemId,
       { $set: updatePayload },
       { new: true }
     );

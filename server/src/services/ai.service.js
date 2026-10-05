@@ -3,7 +3,10 @@ const fs = require("fs");
 const FormData = require("form-data");
 
 
-const AI_SERVICE_URL = "http://127.0.0.1:5000";
+const AI_SERVICE_URL = process.env.AI_SERVICE_URL || "http://127.0.0.1:5000";
+const AI_SERVICE_TOKEN = process.env.AI_SERVICE_TOKEN;
+const AI_TIMEOUT_MS = Number.parseInt(process.env.AI_TIMEOUT_MS || "10000", 10);
+const authHeaders = AI_SERVICE_TOKEN ? { "X-AI-Service-Token": AI_SERVICE_TOKEN } : {};
 
 
 // ==================================================
@@ -16,7 +19,7 @@ async function getTextSimilarity(text1, text2) {
 
         const response = await axios.post(
             `${AI_SERVICE_URL}/similarity`,
-            {
+            { headers: authHeaders, timeout: AI_TIMEOUT_MS,
                 text1: text1,
                 text2: text2
             }
@@ -48,7 +51,7 @@ async function getTextEmbedding(text) {
 
         const response = await axios.post(
             `${AI_SERVICE_URL}/embedding`,
-            {
+            { headers: authHeaders, timeout: AI_TIMEOUT_MS,
                 text: text
             }
         );
@@ -94,12 +97,13 @@ async function getImageEmbedding(imagePath) {
             form,
             {
                 headers: {
-                    ...form.getHeaders()
+                    ...form.getHeaders(),
+                    ...authHeaders
                 },
 
-                maxContentLength: Infinity,
-
-                maxBodyLength: Infinity
+                timeout: AI_TIMEOUT_MS,
+                maxContentLength: 5 * 1024 * 1024,
+                maxBodyLength: 5 * 1024 * 1024
             }
         );
 

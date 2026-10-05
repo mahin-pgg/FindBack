@@ -16,12 +16,16 @@ console.log(`Loading environment variables from: ${envFile}`);
 
 dotenv.config({ path: envFile });
 
+if (!process.env.JWT_SECRET || !process.env.JWT_ACCESS_EXPIRATION_TTL) {
+  throw new Error("JWT_SECRET and JWT_ACCESS_EXPIRATION_TTL are required");
+}
+
 const app = express();
 
 const port = parseInt(process.env.PORT) || 3001;
 
 // Parsing request body
-app.use(express.json());
+app.use(express.json({ limit: "1mb" }));
 
 configureApp(app);
 

@@ -1,3 +1,5 @@
+import os
+from functools import wraps
 from flask import Flask, request, jsonify
 
 from sentence_transformers import SentenceTransformer
@@ -11,6 +13,20 @@ from PIL import Image
 
 
 app = Flask(__name__)
+app.config["MAX_CONTENT_LENGTH"] = int(os.getenv("AI_MAX_REQUEST_BYTES", 5 * 1024 * 1024))
+MAX_TEXT_LENGTH = int(os.getenv("AI_MAX_TEXT_LENGTH", "5000"))
+AI_SERVICE_TOKEN = os.getenv("AI_SERVICE_TOKEN")
+
+def require_service_auth(fn):
+    @wraps(fn)
+    def wrapped(*args, **kwargs):
+        if AI_SERVICE_TOKEN and request.headers.get("X-AI-Service-Token") != AI_SERVICE_TOKEN:
+            return jsonify({"error": "Unauthorized"}), 401
+        return fn(*args, **kwargs)
+    return wrapped
+
+def valid_text(value):
+    return isinstance(value, str) and 0 < len(value.strip()) <= MAX_TEXT_LENGTH
 
 text_model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -27,13 +43,14 @@ def health():
     })
 
 @app.route("/embedding", methods=["POST"])
+@require_service_auth
 def embedding():
 
     data = request.get_json()
 
     text = data.get("text", "")
 
-    if not text:
+    if not valid_text(text):
         return jsonify({
             "error": "Text is required"
         }), 400
@@ -48,6 +65,7 @@ def embedding():
     })
 
 @app.route("/similarity", methods=["POST"])
+@require_service_auth
 def similarity():
 
     data = request.get_json()
@@ -55,7 +73,7 @@ def similarity():
     text1 = data.get("text1", "")
     text2 = data.get("text2", "")
 
-    if not text1 or not text2:
+    if not valid_text(text1) or not valid_text(text2):
         return jsonify({
             "error": "Both text1 and text2 are required"
         }), 400
@@ -80,6 +98,7 @@ def similarity():
     })
 
 @app.route("/image-embedding", methods=["POST"])
+@require_service_auth
 def image_embedding():
 
     if "image" not in request.files:
@@ -91,9 +110,13 @@ def image_embedding():
 
     image_file = request.files["image"]
 
-    image = Image.open(
-        image_file
-    ).convert("RGB")
+    try:
+        image = Image.open(image_file)
+        image.verify()
+        image_file.stream.seek(0)
+        image = Image.open(image_file).convert("RGB")
+    except Exception:
+        return jsonify({"error": "Invalid image"}), 400
 
     image_input = image_preprocess(
         image
@@ -122,6 +145,6 @@ if __name__ == "__main__":
     app.run(
         host="127.0.0.1",
         port=5000,
-        debug=True
+        debug=False
     )
 

@@ -30,11 +30,11 @@ const createUserValidator = [
       "Password must include at least one number, one uppercase letter, one lowercase letter, and one special character."
     ),
 
-  // role (optional)
-  body("role")
-    .optional()
-    .isIn(["admin", "user"])
-    .withMessage("Role must be either 'admin' or 'user'"),
+  // // role (optional)
+  // body("role")
+  //   .optional()
+  //   .isIn(["admin", "user"])
+  //   .withMessage("Role must be either 'admin' or 'user'"),
 
   // phone (optional)
   body("phone")

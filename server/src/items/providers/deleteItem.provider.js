@@ -3,6 +3,8 @@ const { StatusCodes } = require("http-status-codes");
 const { matchedData } = require("express-validator");
 const logger = require("../../helpers/winston.helper.js");
 const errorLogger = require("../../helpers/errorLogger.helper.js");
+const fs = require("fs/promises");
+const path = require("path");
 
 async function deleteItemProvider(req, res) {
 
@@ -37,6 +39,10 @@ async function deleteItemProvider(req, res) {
     // 🧠 SOFT DELETE (recommended)
     item.isActive = false;
     item.status = "closed"; // optional but useful for lifecycle tracking
+
+    if (item.imageURL && item.imageURL.startsWith("uploads/")) {
+      await fs.rm(path.join(__dirname, "../../../", item.imageURL), { force: true });
+    }
 
     console.log(item);
     

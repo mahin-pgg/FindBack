@@ -1,5 +1,8 @@
 const fs = require("fs");
-const path = require("path");
+const helmet = require("helmet");
+const hpp = require("hpp");
+// const mongoSanitize = require("express-mongo-sanitize");
+const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
 const cors = require("cors");
 const authRouter = require("../auth/auth.router.js");
@@ -13,8 +16,15 @@ const { StatusCodes } = require("http-status-codes");
 const expressWinstonLogger = require("../middleware/expressWinston.middleware.js");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpecs = require("./swagger.config.js");
+const path = require("path");
 
 function configureApp(app) {
+
+app.use("/uploads", require("express").static(process.env.UPLOAD_DIR || path.join(__dirname, "../../uploads")));
+app.use(helmet());
+app.use(hpp());
+// app.use(mongoSanitize());
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 300, standardHeaders: "draft-7", legacyHeaders: false }));
 
 // Use CORS
 // Enabled for all origins
@@ -32,23 +42,14 @@ function configureApp(app) {
 
 
 // CORS Configuration with Multiple Origins and Regex Support
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  /\.app\.github\.dev$/,    // GitHub Codespaces
-  /\.devtunnels\.ms$/,      // VS Code Dev Tunnels ← add this
-];
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173").split(",").map((origin) => origin.trim()).filter(Boolean);
 
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (mobile apps, Postman, curl)
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(new Error("Origin is required"));
 
-    const isAllowed = allowedOrigins.some(o =>
-      o instanceof RegExp ? o.test(origin) : o === origin
-    );
+    const isAllowed = allowedOrigins.includes(origin);
 
     if (isAllowed) {
       callback(null, true);
@@ -95,6 +96,12 @@ console.log(swaggerSpecs);
 // Sequence is important
 app.use((req, res) => {
   res.status(StatusCodes.NOT_FOUND).json(null);
+});
+
+app.use((err, req, res, next) => {
+  if (res.headersSent) return next(err);
+  console.error(err.message);
+  res.status(err.statusCode || 500).json({ message: "Internal server error" });
 });
 
 }

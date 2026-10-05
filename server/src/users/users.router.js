@@ -11,6 +11,8 @@ const {
   updatePasswordValidator,
 } = require("./validators/profile.validators.js");
 const upload = require("../middleware/upload.middleware");
+const { normalizeImage } = upload;
+const requireRole = require("../middleware/requireRole.middleware");
 
 const usersRouter = express.Router();
 
@@ -46,7 +48,7 @@ usersRouter.post("/create", createUserValidator, (req, res) => {
   }
 });
 
-usersRouter.patch("/:id/block", blockUserValidator, (req, res) => {
+usersRouter.patch("/:id/block", authenticateToken, requireRole("admin"), blockUserValidator, (req, res) => {
   const result = validationResult(req);
   if (result.isEmpty()) {
     return usersController.handleBlockUser(req, res);
@@ -81,7 +83,7 @@ usersRouter.get(
 // PATCH /users/profile
 usersRouter.patch(
   "/profile",
-  authenticateToken, upload.single("image"), updateProfileValidator, validate,
+  authenticateToken, upload.single("image"), normalizeImage, updateProfileValidator, validate,
   (req, res) => usersController.handleUpdateProfile(req, res)
 );
  
