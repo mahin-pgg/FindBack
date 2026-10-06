@@ -47,7 +47,7 @@ function ItemCard({ item, navigate }) {
       <div className="relative">
         {item.imageURL ? (
           <img
-            src={item.imageURL}
+            src={`http://127.0.0.1:3001/${item.imageURL.replace(/\\/g, "/")}`}
             alt={item.title}
             className="w-full h-40 object-cover"
           />
@@ -56,7 +56,10 @@ function ItemCard({ item, navigate }) {
             {emoji}
           </div>
         )}
-        <span className={`absolute top-2 right-2 ${status.cls} text-white px-3 py-1 text-xs rounded-full shadow`}>
+
+        <span
+          className={`absolute top-2 right-2 ${status.cls} text-white px-3 py-1 text-xs rounded-full shadow`}
+        >
           {status.label}
         </span>
       </div>
