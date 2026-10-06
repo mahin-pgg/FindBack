@@ -1,6 +1,7 @@
 import os
 from functools import wraps
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -11,16 +12,20 @@ import torch
 import numpy as np
 from PIL import Image
 
+load_dotenv()
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = int(os.getenv("AI_MAX_REQUEST_BYTES", 5 * 1024 * 1024))
 MAX_TEXT_LENGTH = int(os.getenv("AI_MAX_TEXT_LENGTH", "5000"))
 AI_SERVICE_TOKEN = os.getenv("AI_SERVICE_TOKEN")
 
+if not AI_SERVICE_TOKEN:
+    raise RuntimeError("AI_SERVICE_TOKEN is not configured")
+
 def require_service_auth(fn):
     @wraps(fn)
     def wrapped(*args, **kwargs):
-        if AI_SERVICE_TOKEN and request.headers.get("X-AI-Service-Token") != AI_SERVICE_TOKEN:
+        if request.headers.get("X-AI-Service-Token") != AI_SERVICE_TOKEN:
             return jsonify({"error": "Unauthorized"}), 401
         return fn(*args, **kwargs)
     return wrapped
