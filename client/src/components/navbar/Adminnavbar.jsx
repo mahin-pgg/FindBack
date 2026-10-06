@@ -36,7 +36,7 @@ const AdminNavbar = () => {
           {/* Logo */}
           <div className="flex items-center gap-2 text-lg font-bold">
             <Settings size={22} />
-            <span>Campus L&F</span>
+            <span>FindBack</span>
           </div>
 
           {/* Hamburger */}

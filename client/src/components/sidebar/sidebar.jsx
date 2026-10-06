@@ -33,7 +33,7 @@ const Sidebar = () => {
       {/* Logo */}
       <div className="p-6 text-2xl font-bold border-b border-white/20 flex items-center gap-2">
         <Brain size={28} />
-        <span>Campus L&F</span>
+        <span>FindBack</span>
       </div>
 
       {/* Nav links */}
