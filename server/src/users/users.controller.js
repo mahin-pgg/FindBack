@@ -9,6 +9,10 @@ async function handleCreateUser(req, res) {
     return await createUserProvider(req, res);
 }
 
+async function handleCreateAdminUser(req, res) {
+    return await createUserProvider(req, res, "admin");
+}
+
 async function handleBlockUser(req, res) {
     return await blockUserProvider(req, res);
 }
@@ -29,6 +33,7 @@ async function handleUpdatePassword(req, res) {
 
 module.exports = {
     handleCreateUser,
+    handleCreateAdminUser,
     handleBlockUser,
     handleUserDashboard,
     handleGetProfile,

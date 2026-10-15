@@ -1,12 +1,20 @@
 import { useMutation } from "@tanstack/react-query";
+import Cookies from "js-cookie";
 
 // Simulated function to post data to an API endpoint
-const createUser = async (user) => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}users/create`, {
+const createUser = async ({ user, admin = false }) => {
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+
+    if (admin) {
+        const token = Cookies.get("token");
+        if (token) headers.Authorization = `Bearer ${token}`;
+    }
+
+    const response = await fetch(`${import.meta.env.VITE_API_URL}${admin ? "users/admin/create" : "users/create"}`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify(user),
     });
     if (!response.ok) {
@@ -17,7 +25,7 @@ const createUser = async (user) => {
 
 export function useSignup() {
    return useMutation({
-        mutationFn: createUser,
+        mutationFn: ({ user, admin = false }) => createUser({ user, admin }),
          onSuccess: (response) => {
             // This callback is triggered if the mutation is successful
             console.log("User Created Successfully", response);

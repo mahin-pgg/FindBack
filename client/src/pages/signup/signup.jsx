@@ -26,7 +26,7 @@ export default function Signup() {
   function onSubmit(values) {
     setServerError("");
     setSuccessMessage("");
-    mutate(values);
+    mutate({ user: values });
     form.reset();
   }
 

@@ -4,7 +4,7 @@ const { matchedData } = require("express-validator");
 const { StatusCodes } = require("http-status-codes");
 const errorLogger = require("../../helpers/errorLogger.helper.js");
 
-async function createUserProvider(req, res) {
+async function createUserProvider(req, res, role = "user") {
   const validatedData = matchedData(req);
 
   try {
@@ -27,8 +27,8 @@ async function createUserProvider(req, res) {
       lastname: validatedData.lastname,
       email: validatedData.email,
       password: hashedPassword,
-      // role: validatedData.role || "user",
-      role: "user",
+      // The role is selected by the server-side route, never by the client.
+      role,
       phone: validatedData.phone || null,
       profileImage: validatedData.profileImage || null,
     });

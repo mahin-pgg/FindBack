@@ -48,6 +48,22 @@ usersRouter.post("/create", createUserValidator, (req, res) => {
   }
 });
 
+// Admin account creation is deliberately separate from public registration.
+// The role is assigned server-side after both authentication and authorization.
+usersRouter.post(
+  "/admin/create",
+  authenticateToken,
+  requireRole("admin"),
+  createUserValidator,
+  (req, res) => {
+    const result = validationResult(req);
+    if (result.isEmpty()) {
+      return usersController.handleCreateAdminUser(req, res);
+    }
+    return res.status(StatusCodes.BAD_REQUEST).json(result.array());
+  }
+);
+
 usersRouter.patch("/:id/block", authenticateToken, requireRole("admin"), blockUserValidator, (req, res) => {
   const result = validationResult(req);
   if (result.isEmpty()) {

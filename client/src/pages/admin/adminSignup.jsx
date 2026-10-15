@@ -27,14 +27,13 @@ export default function AdminSignup() {
       lastname:  "",
       email:     "",
       password:  "",
-      role:      "admin",
     },
   });
 
   function onSubmit(values) {
     setServerError("");
     setSuccessMessage("");
-    mutate(values);
+    mutate({ user: values, admin: true });
     form.reset();
   }
 
