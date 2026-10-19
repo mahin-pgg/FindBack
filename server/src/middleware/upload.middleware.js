@@ -57,7 +57,16 @@ async function normalizeImage(req, res, next) {
       .jpeg({ quality: 85 })
       .toFile(finalPath);
 
-    await fs.promises.unlink(source);
+    // await fs.promises.unlink(source);
+    try {
+     await fs.promises.unlink(source);
+   } catch (cleanupError) {
+      console.warn(
+       "Could not remove temporary upload:",
+       source,
+      cleanupError.code
+    );
+}
 
     req.file.path = finalPath;
     req.file.filename = path.basename(finalPath);
@@ -65,8 +74,19 @@ async function normalizeImage(req, res, next) {
 
     next();
   } catch (error) {
-    await fs.promises.rm(source, { force: true });
-    await fs.promises.rm(finalPath, { force: true });
+    // await fs.promises.rm(source, { force: true });
+    // await fs.promises.rm(finalPath, { force: true });
+    for (const filePath of [source, finalPath]) {
+      try {
+        await fs.promises.rm(filePath, { force: true });
+      } catch (cleanupError) {
+        console.warn(
+         "Image cleanup failed:",
+         filePath,
+         cleanupError.code
+        );
+  }
+}
 
     console.error("Image normalization error:", error);
 
