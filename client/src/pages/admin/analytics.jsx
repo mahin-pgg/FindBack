@@ -23,7 +23,7 @@ const AnalyticsOverview = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       {/* Navbar */}
       <AdminNavbar />
       
@@ -55,14 +55,14 @@ const AnalyticsOverview = () => {
           </div>
 
           <div className="bg-white/80 backdrop-blur-lg p-5 rounded-2xl shadow text-center">
-            <h2 className="text-3xl font-bold text-indigo-500">
+            <h2 className="text-3xl font-bold text-sky-700">
               {stats?.approvedClaims || 0}
             </h2>
             <p className="text-gray-500 mt-2">Claims Approved</p>
           </div>
 
           <div className="bg-white/80 backdrop-blur-lg p-5 rounded-2xl shadow text-center">
-            <h2 className="text-3xl font-bold text-yellow-500">
+            <h2 className="text-3xl font-bold text-orange-500">
               {analytics?.recoveryRate || 0}%
             </h2>
             <p className="text-gray-500 mt-2">Recovery Rate</p>
@@ -128,7 +128,7 @@ const AnalyticsOverview = () => {
 
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <div
-                  className="bg-indigo-500 h-3 rounded-full"
+                  className="bg-sky-700 h-3 rounded-full"
                   style={{
                     width: `${analytics?.claimPercent || 0}%`,
                   }}
@@ -147,7 +147,7 @@ const AnalyticsOverview = () => {
 
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <div
-                  className="bg-yellow-500 h-3 rounded-full"
+                  className="bg-orange-500 h-3 rounded-full"
                   style={{
                     width: `${analytics?.userSatisfaction || 0}%`,
                   }}

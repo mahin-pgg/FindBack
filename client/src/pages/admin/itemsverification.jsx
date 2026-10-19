@@ -18,20 +18,20 @@ const CATEGORY_EMOJI = {
 const CATEGORY_GRADIENT = {
   wallet:      "from-pink-500 to-rose-500",
   phone:       "from-green-500 to-emerald-500",
-  bag:         "from-indigo-500 to-purple-500",
-  id:          "from-yellow-500 to-orange-500",
+  bag:         "from-sky-700 to-sky-800",
+  id:          "from-orange-500 to-orange-500",
   electronics: "from-slate-500 to-gray-600",
-  others:      "from-violet-500 to-indigo-500",
+  others:      "from-violet-500 to-sky-700",
 };
 
 // ─── Status badge — schema enum exactly ──────────────────────────────
 // "pending" | "approved" | "rejected" | "claimed" | "closed"
 function StatusBadge({ status }) {
   const styles = {
-    pending:  "bg-yellow-100 text-yellow-700 border-yellow-300",
+    pending:  "bg-orange-100 text-orange-700 border-orange-300",
     approved: "bg-green-100 text-green-700 border-green-300",
     rejected: "bg-red-100 text-red-700 border-red-300",
-    claimed:  "bg-blue-100 text-blue-700 border-blue-300",
+    claimed:  "bg-sky-100 text-sky-900 border-sky-500",
     closed:   "bg-gray-100 text-gray-500 border-gray-300",
   };
   const labels = {
@@ -55,7 +55,7 @@ function StatusBadge({ status }) {
 // ─── Item Card ────────────────────────────────────────────────────────
 function ItemCard({ item, onApprove, onReject, isApprovingId, isRejectingId }) {
   const emoji    = CATEGORY_EMOJI[item.category]    ?? "📦";
-  const gradient = CATEGORY_GRADIENT[item.category] ?? "from-violet-500 to-indigo-500";
+  const gradient = CATEGORY_GRADIENT[item.category] ?? "from-violet-500 to-sky-700";
   const isLoading = isApprovingId === item._id || isRejectingId === item._id;
 
   // item.date = when item was lost/found (schema: Date required)
@@ -111,7 +111,7 @@ function ItemCard({ item, onApprove, onReject, isApprovingId, isRejectingId }) {
                 </span>
               )}
               {item.verifiedByAdmin && (
-                <span className="text-xs bg-indigo-100 text-indigo-600 border border-indigo-300 px-2 py-0.5 rounded-full font-semibold">
+                <span className="text-xs bg-sky-100 text-sky-800 border border-sky-500 px-2 py-0.5 rounded-full font-semibold">
                   🛡 Admin Verified
                 </span>
               )}
@@ -277,7 +277,7 @@ const ItemsVerification = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       {/* Navbar */}
       <AdminNavbar />
 
@@ -293,10 +293,10 @@ const ItemsVerification = () => {
         {/* ── Stats row — sourced from summary (global counts) ── */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
           {[
-            { label: "Pending",  value: summary.pending,  color: "text-yellow-500" },
+            { label: "Pending",  value: summary.pending,  color: "text-orange-500" },
             { label: "Approved", value: summary.approved, color: "text-green-500"  },
             { label: "Rejected", value: summary.rejected, color: "text-red-500"    },
-            { label: "Claimed",  value: summary.claimed,  color: "text-blue-500"   },
+            { label: "Claimed",  value: summary.claimed,  color: "text-sky-700"   },
             { label: "Closed",   value: summary.closed,   color: "text-gray-400"   },
             { label: "🚩 Flagged", value: summary.flagged, color: "text-orange-500" },
           ].map(({ label, value, color }) => (
@@ -320,11 +320,11 @@ const ItemsVerification = () => {
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               placeholder="🔍 Search title, description, keywords..."
-              className="flex-1 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+              className="flex-1 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
             />
             <button
               onClick={handleSearch}
-              className="px-4 py-3 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium"
+              className="px-4 py-3 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium"
             >
               Search
             </button>
@@ -334,7 +334,7 @@ const ItemsVerification = () => {
           <select
             value={statusFilter}
             onChange={(e) => handleFilterChange("status", e.target.value)}
-            className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Statuses</option>
             <option value="pending">Pending</option>
@@ -348,7 +348,7 @@ const ItemsVerification = () => {
           <select
             value={typeFilter}
             onChange={(e) => handleFilterChange("type", e.target.value)}
-            className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Types</option>
             <option value="lost">Lost</option>
@@ -359,7 +359,7 @@ const ItemsVerification = () => {
           <select
             value={categoryFilter}
             onChange={(e) => handleFilterChange("category", e.target.value)}
-            className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Categories</option>
             <option value="wallet">Wallet</option>
@@ -401,7 +401,7 @@ const ItemsVerification = () => {
         ) : (
           <div className="space-y-4 mb-8">
             {isFetching && (
-              <p className="text-xs text-indigo-400 text-right animate-pulse">
+              <p className="text-xs text-sky-600 text-right animate-pulse">
                 Refreshing…
               </p>
             )}
@@ -424,7 +424,7 @@ const ItemsVerification = () => {
             <button
               disabled={page <= 1}
               onClick={() => setPage((p) => p - 1)}
-              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               ← Prev
             </button>
@@ -434,7 +434,7 @@ const ItemsVerification = () => {
             <button
               disabled={page >= pagination.totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               Next →
             </button>

@@ -31,7 +31,7 @@ const AdminNavbar = () => {
   return (
     <>
       {/* ── Top bar — mobile only (md:hidden) ── */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-indigo-700 to-purple-700 text-white shadow-lg">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-sky-950 to-sky-900 text-white shadow-lg">
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <div className="flex items-center gap-2 text-lg font-bold">

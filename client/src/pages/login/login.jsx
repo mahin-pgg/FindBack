@@ -53,7 +53,7 @@ export default function Login() {
   }, [isError]);
 
   return (
-    <section className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+    <section className="flex min-h-screen items-center justify-center bg-sky-50 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
         
         {/* Header */}
@@ -73,7 +73,7 @@ export default function Login() {
               type="email"
               placeholder="Email"
               {...form.register("email")}
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-700"
             />
             {form.formState.errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -88,7 +88,7 @@ export default function Login() {
               type="password"
               placeholder="Password"
               {...form.register("password")}
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-700"
             />
             {form.formState.errors.password && (
               <p className="text-red-500 text-sm mt-1">
@@ -103,7 +103,7 @@ export default function Login() {
               Don't have an account?{" "}
               <Link
                 to="/signup"
-                className="text-blue-500 hover:underline"
+                className="text-sky-700 hover:underline"
               >
                 Signup
               </Link>
@@ -112,7 +112,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+              className="bg-sky-800 text-white px-4 py-2 rounded-lg hover:bg-sky-900 transition disabled:opacity-50"
             >
               {isLoading ? "Logging in..." : "Login"}
             </button>

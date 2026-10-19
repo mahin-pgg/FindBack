@@ -28,7 +28,7 @@ const AdminSidebar = () => {
 
   return (
     // hidden on mobile — AdminNavbar handles mobile navigation
-    <aside className="w-64 bg-gradient-to-b from-indigo-700 to-purple-700 text-white hidden md:flex flex-col shadow-lg shrink-0">
+    <aside className="w-64 bg-gradient-to-b from-sky-950 to-sky-900 text-white hidden md:flex flex-col shadow-lg shrink-0">
 
       {/* Logo */}
       <div className="p-6 text-2xl font-bold border-b border-white/20 flex items-center gap-2">

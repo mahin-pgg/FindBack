@@ -11,7 +11,7 @@ import MatchDetailsModal from "../../components/matches/MatchDetailsModal.jsx";
 
 // ─── STATUS STYLES ─────────────────────────────────────────────
 const STATUS_STYLES = {
-  suggested: "text-purple-600",
+  suggested: "text-sky-900",
   accepted: "text-green-600",
   rejected: "text-red-500",
 };
@@ -146,7 +146,7 @@ console.log("matches:", matches);
               {match.canClaim && (
                 <button
                   onClick={() => setClaimMatch(match)}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1 rounded"
+                  className="bg-sky-700 hover:bg-sky-800 text-white px-3 py-1 rounded"
                 >
                   Create Claim
                 </button>
@@ -154,7 +154,7 @@ console.log("matches:", matches);
 
               {/* AFTER CLAIM CREATED (LOST USER) */}
               {match.hasClaim && (
-                <div className="text-sm text-indigo-600">
+                <div className="text-sm text-sky-800">
                   Claim submitted. Waiting for review.
                 </div>
               )}
@@ -198,4 +198,3 @@ console.log("matches:", matches);
 };
 
 export default MyMatches;
-

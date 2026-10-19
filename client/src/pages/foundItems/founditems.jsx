@@ -10,10 +10,10 @@ const CATEGORY_EMOJI = {
 };
 
 const STATUS_STYLES = {
-  pending:  { label: "Pending",  cls: "bg-yellow-500" },
+  pending:  { label: "Pending",  cls: "bg-orange-500" },
   approved: { label: "Approved", cls: "bg-green-500"  },
   rejected: { label: "Rejected", cls: "bg-red-500"    },
-  claimed:  { label: "Claimed",  cls: "bg-blue-500"   },
+  claimed:  { label: "Claimed",  cls: "bg-sky-700"   },
   closed:   { label: "Closed",   cls: "bg-gray-400"   },
 };
 
@@ -88,7 +88,7 @@ function ItemCard({ item, navigate }) {
         )}
 
         <button
-          className="mt-4 w-full py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:opacity-90 text-sm font-medium transition"
+          className="mt-4 w-full py-2 bg-gradient-to-r from-sky-700 to-sky-800 text-white rounded-lg hover:opacity-90 text-sm font-medium transition"
           onClick={() => navigate(`/items/${item._id}`)}
         >
           View Details
@@ -128,7 +128,7 @@ const FoundItems = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       <Navbar />
       <Sidebar />
 
@@ -145,13 +145,13 @@ const FoundItems = () => {
               type="text"
               value={searchInput}
               placeholder="🔍 Search found items..."
-              className="flex-1 px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+              className="flex-1 px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
             <button
               onClick={handleSearch}
-              className="px-4 py-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium"
+              className="px-4 py-2.5 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium"
             >
               Search
             </button>
@@ -161,7 +161,7 @@ const FoundItems = () => {
           <select
             value={categoryFilter}
             onChange={(e) => { setCategoryFilter(e.target.value); setPage(1); }}
-            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Categories</option>
             <option value="wallet">Wallet</option>
@@ -176,7 +176,7 @@ const FoundItems = () => {
           <select
             value={statusFilter}
             onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Statuses</option>
             <option value="pending">Pending</option>
@@ -224,7 +224,7 @@ const FoundItems = () => {
             <button
               disabled={page <= 1}
               onClick={() => setPage((p) => p - 1)}
-              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               ← Prev
             </button>
@@ -234,7 +234,7 @@ const FoundItems = () => {
             <button
               disabled={page >= pagination.totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               Next →
             </button>

@@ -115,7 +115,7 @@ const MyProfile = () => {
   const avatarSrc = previewImage || profile?.profileImage || null;
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       <Navbar />
       <Sidebar />
 
@@ -147,15 +147,15 @@ const MyProfile = () => {
                     <img
                       src={avatarSrc}
                       alt="profile"
-                      className="w-28 h-28 rounded-full border-4 border-indigo-500 shadow object-cover"
+                      className="w-28 h-28 rounded-full border-4 border-sky-700 shadow object-cover"
                     />
                   ) : (
-                    <div className="w-28 h-28 rounded-full border-4 border-indigo-500 shadow bg-indigo-500 text-white flex items-center justify-center text-4xl font-bold">
+                    <div className="w-28 h-28 rounded-full border-4 border-sky-700 shadow bg-sky-700 text-white flex items-center justify-center text-4xl font-bold">
                       {profile?.firstname?.[0]?.toUpperCase() ?? "?"}
                     </div>
                   )}
                   {editMode && (
-                    <label className="absolute bottom-0 right-0 bg-indigo-500 text-white p-1.5 rounded-full cursor-pointer hover:bg-indigo-600 shadow">
+                    <label className="absolute bottom-0 right-0 bg-sky-700 text-white p-1.5 rounded-full cursor-pointer hover:bg-sky-800 shadow">
                       <Pencil size={14} />
                       <input
                         type="file"
@@ -188,7 +188,7 @@ const MyProfile = () => {
                 )}
                 <button
                   onClick={() => setEditMode((e) => !e)}
-                  className="mt-3 px-4 py-1.5 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 text-sm transition"
+                  className="mt-3 px-4 py-1.5 bg-sky-700 text-white rounded-lg hover:bg-sky-800 text-sm transition"
                 >
                   {editMode ? "Cancel" : "Edit Profile"}
                 </button>
@@ -200,9 +200,9 @@ const MyProfile = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 text-center">
               {[
-                { label: "Lost Items",  value: stats.lostItems,  bg: "bg-indigo-100", color: "text-indigo-600" },
+                { label: "Lost Items",  value: stats.lostItems,  bg: "bg-sky-100", color: "text-sky-800" },
                 { label: "Found Items", value: stats.foundItems, bg: "bg-green-100",  color: "text-green-600"  },
-                { label: "Claims",      value: stats.claims,     bg: "bg-yellow-100", color: "text-yellow-600" },
+                { label: "Claims",      value: stats.claims,     bg: "bg-orange-100", color: "text-orange-600" },
               ].map(({ label, value, bg, color }) => (
                 <div key={label} className={`${bg} p-4 rounded-xl`}>
                   {isLoading
@@ -244,7 +244,7 @@ const MyProfile = () => {
           {editMode && (
             <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6">
               <div className="flex items-center gap-2 mb-5">
-                <Pencil size={20} className="text-indigo-500" />
+                <Pencil size={20} className="text-sky-700" />
                 <h2 className="text-xl font-semibold text-gray-700">Edit Profile</h2>
               </div>
 
@@ -258,7 +258,7 @@ const MyProfile = () => {
                       type="text"
                       value={profileForm.firstname}
                       onChange={(e) => setProfileForm((f) => ({ ...f, firstname: e.target.value }))}
-                      className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                       placeholder="First name"
                     />
                   </div>
@@ -270,7 +270,7 @@ const MyProfile = () => {
                       type="text"
                       value={profileForm.lastname}
                       onChange={(e) => setProfileForm((f) => ({ ...f, lastname: e.target.value }))}
-                      className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                       placeholder="Last name"
                     />
                   </div>
@@ -284,7 +284,7 @@ const MyProfile = () => {
                     type="tel"
                     value={profileForm.phone}
                     onChange={(e) => setProfileForm((f) => ({ ...f, phone: e.target.value }))}
-                    className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                     placeholder="+91 9876543210"
                   />
                 </div>
@@ -293,7 +293,7 @@ const MyProfile = () => {
                   <button
                     type="submit"
                     disabled={isUpdating}
-                    className="px-6 py-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-6 py-2.5 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isUpdating ? "Saving…" : "Save Changes"}
                   </button>
@@ -313,12 +313,12 @@ const MyProfile = () => {
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
-                <Lock size={20} className="text-indigo-500" />
+                <Lock size={20} className="text-sky-700" />
                 <h2 className="text-xl font-semibold text-gray-700">Change Password</h2>
               </div>
               <button
                 onClick={() => setShowPw((s) => !s)}
-                className="text-sm text-indigo-500 hover:underline"
+                className="text-sm text-sky-700 hover:underline"
               >
                 {showPw ? "Hide" : "Show form"}
               </button>
@@ -340,7 +340,7 @@ const MyProfile = () => {
                       value={pwForm[key]}
                       onChange={(e) => setPwForm((f) => ({ ...f, [key]: e.target.value }))}
                       placeholder={placeholder}
-                      className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                     />
                   </div>
                 ))}
@@ -364,7 +364,7 @@ const MyProfile = () => {
                 <button
                   type="submit"
                   disabled={isChangingPw}
-                  className="w-full py-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-2.5 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isChangingPw ? "Updating…" : "Update Password"}
                 </button>

@@ -55,12 +55,12 @@ const ReportLost = () => {
   }
 
   const inputCls =
-    "w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-400 outline-none bg-white disabled:opacity-50 transition";
+    "w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-sky-600 outline-none bg-white disabled:opacity-50 transition";
 
   const labelCls = "block text-gray-600 text-sm font-medium mb-1";
 
   return (
-    <div className="flex min-h-screen bg-linear-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-linear-to-br from-sky-50 to-sky-100">
       <Navbar />
       <Sidebar />
 
@@ -71,7 +71,7 @@ const ReportLost = () => {
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden">
 
             {/* Header */}
-            <div className="bg-linear-to-r from-indigo-500 to-purple-500 px-6 py-5">
+            <div className="bg-linear-to-r from-sky-700 to-sky-800 px-6 py-5">
               <h1 className="text-xl md:text-2xl font-bold text-white">
                 Report Lost / Found Item
               </h1>
@@ -224,11 +224,11 @@ const ReportLost = () => {
                   Upload Image{" "}
                   <span className="text-gray-400 font-normal">(optional)</span>
                 </label>
-                <div className="border-2 border-dashed border-gray-200 rounded-xl p-4 bg-white hover:border-indigo-300 transition">
+                <div className="border-2 border-dashed border-gray-200 rounded-xl p-4 bg-white hover:border-sky-500 transition">
                   <input
                     type="file"
                     accept="image/jpeg,image/jpg,image/png,image/webp"
-                    className="w-full text-sm text-gray-500 file:mr-3 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100 disabled:opacity-50"
+                    className="w-full text-sm text-gray-500 file:mr-3 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-sky-50 file:text-sky-800 hover:file:bg-sky-100 disabled:opacity-50"
                     disabled={isSubmitting}
                     {...register("image")}
                   />
@@ -243,7 +243,7 @@ const ReportLost = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 bg-linear-to-r from-indigo-500 to-purple-500 text-white rounded-xl font-semibold text-sm hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed transition shadow-lg shadow-indigo-200"
+                className="w-full py-3 bg-linear-to-r from-sky-700 to-sky-800 text-white rounded-xl font-semibold text-sm hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed transition shadow-lg shadow-sky-200"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">

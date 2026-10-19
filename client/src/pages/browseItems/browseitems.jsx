@@ -41,7 +41,7 @@ function ItemCard({ item, navigate }) {
           className="w-full h-40 object-cover rounded-xl"
         />
       ) : (
-        <div className="w-full h-40 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center text-5xl">
+        <div className="w-full h-40 rounded-xl bg-gradient-to-br from-sky-100 to-sky-100 flex items-center justify-center text-5xl">
           {emoji}
         </div>
       )}
@@ -79,7 +79,7 @@ function ItemCard({ item, navigate }) {
         </div>
       )}
 
-      <button className="mt-auto w-full py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium"
+      <button className="mt-auto w-full py-2 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium"
       onClick={() => navigate(`/items/${item._id}`)}>
         View Details
       </button>
@@ -142,7 +142,7 @@ const BrowseItems = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       <Navbar />
       <Sidebar />
 
@@ -161,13 +161,13 @@ const BrowseItems = () => {
               type="text"
               value={searchInput}
               placeholder="🔍 Search by title, description..."
-              className="flex-1 px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+              className="flex-1 px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
             <button
               onClick={handleSearch}
-              className="px-4 py-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium"
+              className="px-4 py-2.5 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium"
             >
               Search
             </button>
@@ -177,7 +177,7 @@ const BrowseItems = () => {
           <select
             value={category}
             onChange={(e) => handleCategoryChange(e.target.value)}
-            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Categories</option>
             <option value="wallet">Wallet</option>
@@ -192,7 +192,7 @@ const BrowseItems = () => {
           <select
             value={type}
             onChange={(e) => handleTypeChange(e.target.value)}
-            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+            className="px-4 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
           >
             <option value="">All Types</option>
             <option value="lost">Lost</option>
@@ -205,19 +205,19 @@ const BrowseItems = () => {
         {(keyword || category || type) && (
           <div className="flex gap-2 flex-wrap mb-4">
             {keyword && (
-              <span className="flex items-center gap-1 text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full">
+              <span className="flex items-center gap-1 text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full">
                 🔍 "{keyword}"
                 <button onClick={() => { setKeyword(""); setSearchInput(""); setPage(1); }}>✕</button>
               </span>
             )}
             {category && (
-              <span className="flex items-center gap-1 text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full capitalize">
+              <span className="flex items-center gap-1 text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full capitalize">
                 🏷 {category}
                 <button onClick={() => { setCategory(""); setPage(1); }}>✕</button>
               </span>
             )}
             {type && (
-              <span className="flex items-center gap-1 text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full capitalize">
+              <span className="flex items-center gap-1 text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full capitalize">
                 📌 {type}
                 <button onClick={() => { setType(""); setPage(1); }}>✕</button>
               </span>
@@ -261,7 +261,7 @@ const BrowseItems = () => {
             <button
               disabled={page <= 1}
               onClick={() => setPage((p) => p - 1)}
-              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               ← Prev
             </button>
@@ -273,7 +273,7 @@ const BrowseItems = () => {
             <button
               disabled={page >= pagination.totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               Next →
             </button>

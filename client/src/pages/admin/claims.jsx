@@ -32,7 +32,7 @@ const [reviewNote, setReviewNote] = React.useState("");
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       {/* Navbar */}
       <AdminNavbar />
 
@@ -50,7 +50,7 @@ const [reviewNote, setReviewNote] = React.useState("");
         <div className="grid md:grid-cols-4 gap-6 mb-8">
 
           <div className="bg-white/80 p-5 rounded-2xl shadow text-center">
-            <h2 className="text-3xl font-bold text-yellow-500">
+            <h2 className="text-3xl font-bold text-orange-500">
               {
                 claims.filter(
                   (c) => c.status === "pending"
@@ -92,7 +92,7 @@ const [reviewNote, setReviewNote] = React.useState("");
           </div>
 
           <div className="bg-white/80 p-5 rounded-2xl shadow text-center">
-            <h2 className="text-3xl font-bold text-indigo-500">
+            <h2 className="text-3xl font-bold text-sky-700">
               {claims.length}
             </h2>
 
@@ -118,7 +118,7 @@ const [reviewNote, setReviewNote] = React.useState("");
                 {/* Left */}
                 <div className="flex gap-5">
 
-                  <div className="w-28 h-28 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-4xl shadow">
+                  <div className="w-28 h-28 rounded-xl bg-gradient-to-br from-sky-700 to-sky-800 flex items-center justify-center text-white text-4xl shadow">
                     📦
                   </div>
 
@@ -148,7 +148,7 @@ const [reviewNote, setReviewNote] = React.useState("");
                       {claim.message}
                     </p>
 
-                    <p className="text-sm text-yellow-600 font-medium mt-2">
+                    <p className="text-sm text-orange-600 font-medium mt-2">
                       Status:
                       {" "}
                       {claim.status}
@@ -209,7 +209,7 @@ const [reviewNote, setReviewNote] = React.useState("");
         value={reviewNote}
         onChange={(e) => setReviewNote(e.target.value)}
         placeholder="Enter review note..."
-        className="w-full border rounded-xl p-3 h-32 outline-none focus:ring-2 focus:ring-indigo-400"
+        className="w-full border rounded-xl p-3 h-32 outline-none focus:ring-2 focus:ring-sky-600"
       />
 
       <div className="flex justify-end gap-3 mt-5">

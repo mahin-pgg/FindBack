@@ -23,7 +23,7 @@ const MatchDetailsModal = ({ match, onClose }) => {
         {/* MATCH SCORE */}
         <div className="mb-4">
           <p className="text-sm text-gray-500">Match Score</p>
-          <p className="text-2xl font-bold text-indigo-600">
+          <p className="text-2xl font-bold text-sky-800">
             {match.matchScore}%
           </p>
         </div>
@@ -75,7 +75,7 @@ const MatchDetailsModal = ({ match, onClose }) => {
         {/* STATUS */}
         <div>
           <p className="text-sm text-gray-500">Status</p>
-          <span className="font-semibold capitalize text-indigo-600">
+          <span className="font-semibold capitalize text-sky-800">
             {match.status}
           </span>
         </div>

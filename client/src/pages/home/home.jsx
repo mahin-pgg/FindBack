@@ -224,16 +224,16 @@ const Home = () => {
         <main className="mx-auto flex min-h-[calc(100vh-100px)] max-w-7xl flex-col items-center px-5 pb-16 pt-20 text-center sm:px-8 lg:px-10 lg:pt-24">
           {/* AI Badge */}
 
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-400/10 px-4 py-2 shadow-lg shadow-indigo-950/20 backdrop-blur-md">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-400/20 text-xs text-indigo-300">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-sky-600/20 bg-sky-600/10 px-4 py-2 shadow-lg shadow-sky-950/20 backdrop-blur-md">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sky-600/20 text-xs text-sky-500">
               ✦
             </span>
 
-            <span className="text-xs font-semibold tracking-wide text-indigo-200 sm:text-sm">
+            <span className="text-xs font-semibold tracking-wide text-sky-200 sm:text-sm">
               AI-POWERED CAMPUS LOST & FOUND
             </span>
 
-            <span className="ml-1 h-1.5 w-1.5 animate-pulse rounded-full bg-indigo-300" />
+            <span className="ml-1 h-1.5 w-1.5 animate-pulse rounded-full bg-sky-500" />
           </div>
 
           {/* Heading */}
@@ -242,7 +242,7 @@ const Home = () => {
             Lost something?
             <br />
 
-            <span className="bg-gradient-to-r from-indigo-200 via-violet-300 to-purple-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sky-200 via-violet-300 to-sky-400 bg-clip-text text-transparent">
               Find it back.
             </span>
           </h1>
@@ -260,7 +260,7 @@ const Home = () => {
           <div className="mt-10 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
             <Link
               to="/login"
-              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-slate-950 shadow-2xl shadow-indigo-950/30 transition duration-300 hover:-translate-y-1 hover:bg-white/90 sm:w-auto"
+              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-slate-950 shadow-2xl shadow-sky-950/30 transition duration-300 hover:-translate-y-1 hover:bg-white/90 sm:w-auto"
             >
               Report Lost Item
 
@@ -298,7 +298,7 @@ const Home = () => {
               >
                 {/* Icon */}
 
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-indigo-400/20 bg-indigo-400/10 text-lg text-indigo-300 transition group-hover:scale-105">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-sky-600/20 bg-sky-600/10 text-lg text-sky-500 transition group-hover:scale-105">
                   {feature.icon}
                 </div>
 
@@ -324,7 +324,7 @@ const Home = () => {
           <div className="relative mt-16 w-full max-w-4xl">
             {/* Glow behind preview */}
 
-            <div className="absolute -inset-10 -z-10 rounded-full bg-indigo-500/10 blur-3xl" />
+            <div className="absolute -inset-10 -z-10 rounded-full bg-sky-700/10 blur-3xl" />
 
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.045] p-2 shadow-2xl shadow-black/30 backdrop-blur-xl">
               <div className="rounded-2xl border border-white/10 bg-[#080c1d]/90 p-5 sm:p-7">
@@ -373,12 +373,12 @@ const Home = () => {
 
                   {/* AI match */}
 
-                  <div className="rounded-2xl border border-indigo-400/20 bg-indigo-400/[0.06] p-5 text-left">
+                  <div className="rounded-2xl border border-sky-600/20 bg-sky-600/[0.06] p-5 text-left">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-indigo-300">✦</span>
+                        <span className="text-sky-500">✦</span>
 
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-indigo-200/70">
+                        <span className="text-[10px] font-semibold uppercase tracking-widest text-sky-200/70">
                           AI Possible Match
                         </span>
                       </div>
@@ -389,7 +389,7 @@ const Home = () => {
                     </div>
 
                     <div className="mt-5 flex items-center gap-4">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/30 to-purple-500/20 text-2xl">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-sky-700/30 to-sky-800/20 text-2xl">
                         📱
                       </div>
 
@@ -409,7 +409,7 @@ const Home = () => {
                 {/* AI processing line */}
 
                 <div className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/[0.025] py-3 text-xs text-white/30">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-indigo-400" />
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-600" />
                   AI analyzes descriptions, categories, locations & images
                 </div>
               </div>

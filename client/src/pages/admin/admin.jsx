@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   const logs      = data?.data?.logs      ?? [];
 
   return (
-    <div className="flex min-h-screen bg-linear-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-linear-to-br from-sky-50 to-sky-100">
       <AdminNavbar />
       <AdminSidebar />
 
@@ -66,9 +66,9 @@ const AdminDashboard = () => {
         {/* ── Stats ── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {[
-            { label: "Total Items",    value: stats.totalItems,    color: "text-indigo-600" },
+            { label: "Total Items",    value: stats.totalItems,    color: "text-sky-800" },
             { label: "Recovered",      value: stats.recovered,     color: "text-green-600"  },
-            { label: "Pending Claims", value: stats.pendingClaims, color: "text-yellow-500" },
+            { label: "Pending Claims", value: stats.pendingClaims, color: "text-orange-500" },
             { label: "Blocked Users",  value: stats.blockedUsers,  color: "text-red-500"    },
           ].map(({ label, value, color }) => (
             <div key={label} className="bg-white/80 backdrop-blur-lg p-4 md:p-5 rounded-2xl shadow text-center">
@@ -93,7 +93,7 @@ const AdminDashboard = () => {
             <div className="space-y-4">
               <ProgressBar label="Lost Items"      value={analytics.lostPercent}  color="bg-red-500"    />
               <ProgressBar label="Found Items"     value={analytics.foundPercent} color="bg-green-500"  />
-              <ProgressBar label="Approved Claims" value={analytics.claimPercent} color="bg-indigo-500" />
+              <ProgressBar label="Approved Claims" value={analytics.claimPercent} color="bg-sky-700" />
             </div>
           )}
         </div>
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
                 </thead>
                 <tbody>
                   {users.map((user) => (
-                    <tr key={user._id} className="border-b hover:bg-gray-50 transition">
+                    <tr key={user._id} className="border-b hover:bg-sky-50 transition">
                       <td className="p-2 font-medium text-gray-700 max-w-[120px] truncate">
                         {user.firstname} {user.lastname}
                       </td>
@@ -141,7 +141,7 @@ const AdminDashboard = () => {
                             onClick={() => blockUser(user._id)}
                             className={`px-3 py-1 text-white text-xs rounded-lg transition ${
                               user.isBlocked
-                                ? "bg-indigo-500 hover:bg-indigo-600"
+                                ? "bg-sky-700 hover:bg-sky-800"
                                 : "bg-red-500 hover:bg-red-600"
                             }`}
                           >
@@ -174,7 +174,7 @@ const AdminDashboard = () => {
               {claims.map((claim) => (
                 <div
                   key={claim._id}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-sky-50 p-4 rounded-xl hover:bg-gray-100 transition"
                 >
                   <div className="min-w-0">
                     <h3 className="font-semibold text-gray-700 text-sm truncate">
@@ -186,7 +186,7 @@ const AdminDashboard = () => {
                     <span className={`text-xs font-medium capitalize mt-1 inline-block ${
                       claim.status === "approved" ? "text-green-500"
                       : claim.status === "rejected" ? "text-red-500"
-                      : "text-yellow-500"
+                      : "text-orange-500"
                     }`}>
                       {claim.status}
                     </span>
@@ -228,7 +228,7 @@ const AdminDashboard = () => {
             <ul className="space-y-2 text-gray-600 text-sm">
               {logs.map((log, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="mt-0.5 text-indigo-400 shrink-0">›</span>
+                  <span className="mt-0.5 text-sky-600 shrink-0">›</span>
                   {log}
                 </li>
               ))}

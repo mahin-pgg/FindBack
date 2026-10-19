@@ -12,14 +12,14 @@ const CATEGORY_EMOJI = {
 };
 
 const STATUS_STYLES = {
-  pending:      "text-yellow-500",
+  pending:      "text-orange-500",
   approved:     "text-green-500",
   rejected:     "text-red-500",
-  claimed:      "text-blue-500",
+  claimed:      "text-sky-700",
   closed:       "text-gray-400",
-  under_review: "text-indigo-500",
+  under_review: "text-sky-700",
   completed:    "text-emerald-500",
-  suggested:    "text-purple-500",
+  suggested:    "text-sky-800",
   accepted:     "text-green-500",
 };
 
@@ -48,7 +48,7 @@ const Dashboard = () => {
   const profile        = dashboard.profile ?? cookieUser;
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
 
       {/* Navbar — mobile only, outside main so it doesn't inherit padding */}
       <Navbar />
@@ -66,9 +66,9 @@ const Dashboard = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="hidden sm:block px-4 py-2 rounded-full border text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 w-40 md:w-52"
+              className="hidden sm:block px-4 py-2 rounded-full border text-sm focus:outline-none focus:ring-2 focus:ring-sky-600 w-40 md:w-52"
             />
-            <div className="w-9 h-9 bg-gradient-to-r from-indigo-500 to-purple-500 text-white flex items-center justify-center rounded-full font-bold text-sm shrink-0">
+            <div className="w-9 h-9 bg-gradient-to-r from-sky-700 to-sky-800 text-white flex items-center justify-center rounded-full font-bold text-sm shrink-0">
               {profile?.firstname?.charAt(0)?.toUpperCase() ?? "?"}
             </div>
           </div>
@@ -86,8 +86,8 @@ const Dashboard = () => {
           {[
             { title: "Lost Items",  value: stats.lostItems,  color: "text-red-500"    },
             { title: "Found Items", value: stats.foundItems, color: "text-green-500"  },
-            { title: "My Claims",   value: stats.claims,     color: "text-yellow-500" },
-            { title: "My Matches",  value: stats.matches,    color: "text-indigo-600" },
+            { title: "My Claims",   value: stats.claims,     color: "text-orange-500" },
+            { title: "My Matches",  value: stats.matches,    color: "text-sky-800" },
           ].map((card) => (
             <div
               key={card.title}
@@ -139,7 +139,7 @@ const Dashboard = () => {
                   </tr>
                 ) : (
                   recentActivity.map((item) => (
-                    <tr key={item._id} className="border-b hover:bg-indigo-50 transition">
+                    <tr key={item._id} className="border-b hover:bg-sky-50 transition">
                       <td className="py-3 pr-4 font-medium text-gray-700 max-w-[120px] truncate">
                         {CATEGORY_EMOJI[item.category] ?? "📦"} {item.title}
                       </td>
@@ -164,10 +164,10 @@ const Dashboard = () => {
         <div className="bg-white p-4 md:p-6 rounded-2xl shadow">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2 mb-4">
-              <Search className="text-indigo-600 shrink-0" size={18} />
-              <h2 className="text-lg md:text-xl font-semibold text-indigo-600">My Matches</h2>
+              <Search className="text-sky-800 shrink-0" size={18} />
+              <h2 className="text-lg md:text-xl font-semibold text-sky-800">My Matches</h2>
             </div>
-            <Link to="/mymatches" className="text-xs md:text-sm text-indigo-500 hover:underline whitespace-nowrap">
+            <Link to="/mymatches" className="text-xs md:text-sm text-sky-700 hover:underline whitespace-nowrap">
               View →
             </Link>
           </div>
@@ -196,7 +196,7 @@ const Dashboard = () => {
                       </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full whitespace-nowrap">
+                      <span className="text-xs font-bold text-sky-800 bg-sky-50 px-2 py-1 rounded-full whitespace-nowrap">
                         {match.matchScore}%
                       </span>
                       <div className="mt-1">
@@ -204,7 +204,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <button className="mt-3 px-3 py-1.5 bg-indigo-500 text-white rounded-lg text-xs hover:bg-indigo-600 transition">
+                  <button className="mt-3 px-3 py-1.5 bg-sky-700 text-white rounded-lg text-xs hover:bg-sky-800 transition">
                     View
                   </button>
                 </div>
@@ -220,7 +220,7 @@ const Dashboard = () => {
               <BaggageClaim className="text-green-600 shrink-0" size={18} />
               <h2 className="text-lg md:text-xl font-semibold text-green-600">My Claims</h2>
             </div>
-            <Link to="/myclaims" className="text-xs md:text-sm text-indigo-500 hover:underline whitespace-nowrap">
+            <Link to="/myclaims" className="text-xs md:text-sm text-sky-700 hover:underline whitespace-nowrap">
               View →
             </Link>
           </div>
@@ -236,7 +236,7 @@ const Dashboard = () => {
               {claims.map((claim) => (
                 <li
                   key={claim._id}
-                  className="flex justify-between items-center bg-gray-50 p-3 rounded-xl hover:bg-gray-100 transition gap-3"
+                  className="flex justify-between items-center bg-sky-50 p-3 rounded-xl hover:bg-gray-100 transition gap-3"
                 >
                   <div className="min-w-0">
                     <span className="font-medium text-gray-700 text-sm truncate block">
@@ -258,10 +258,10 @@ const Dashboard = () => {
         <div className="bg-white p-4 md:p-6 rounded-2xl shadow">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <Compass className="text-purple-600 shrink-0" size={18} />
-              <h2 className="text-lg md:text-xl font-semibold text-purple-600">Browse Items</h2>
+              <Compass className="text-sky-900 shrink-0" size={18} />
+              <h2 className="text-lg md:text-xl font-semibold text-sky-900">Browse Items</h2>
             </div>
-            <Link to="/browseitems" className="text-xs md:text-sm text-indigo-500 hover:underline whitespace-nowrap">
+            <Link to="/browseitems" className="text-xs md:text-sm text-sky-700 hover:underline whitespace-nowrap">
               View all →
             </Link>
           </div>
@@ -315,7 +315,7 @@ const Dashboard = () => {
                   className="w-14 h-14 rounded-full object-cover shrink-0"
                 />
               ) : (
-                <div className="w-14 h-14 bg-indigo-500 text-white flex items-center justify-center rounded-full text-xl font-bold shrink-0">
+                <div className="w-14 h-14 bg-sky-700 text-white flex items-center justify-center rounded-full text-xl font-bold shrink-0">
                   {profile?.firstname?.charAt(0)?.toUpperCase() ?? "?"}
                 </div>
               )}
@@ -328,7 +328,7 @@ const Dashboard = () => {
                   <p className="text-gray-400 text-xs">📞 {profile.phone}</p>
                 )}
                 <Link to="/profile">
-                  <button className="mt-2 px-4 py-1.5 bg-indigo-500 text-white rounded-lg text-xs hover:bg-indigo-600 transition">
+                  <button className="mt-2 px-4 py-1.5 bg-sky-700 text-white rounded-lg text-xs hover:bg-sky-800 transition">
                     Edit Profile
                   </button>
                 </Link>

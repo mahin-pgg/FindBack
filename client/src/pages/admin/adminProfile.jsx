@@ -114,7 +114,7 @@ const AdminProfile = () => {
     : "—";
 
   return (
-    <div className="flex min-h-screen bg-linear-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-linear-to-br from-sky-50 to-sky-100">
       {/* Navbar */}
       <AdminNavbar />
       
@@ -145,15 +145,15 @@ const AdminProfile = () => {
                     <img
                       src={avatarSrc}
                       alt="admin"
-                      className="w-36 h-36 rounded-full object-cover shadow-lg border-4 border-indigo-500"
+                      className="w-36 h-36 rounded-full object-cover shadow-lg border-4 border-sky-700"
                     />
                   ) : (
-                    <div className="w-36 h-36 rounded-full bg-linear-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white text-5xl font-bold shadow-lg">
+                    <div className="w-36 h-36 rounded-full bg-linear-to-r from-sky-700 to-sky-800 flex items-center justify-center text-white text-5xl font-bold shadow-lg">
                       {initials || "A"}
                     </div>
                   )}
                   {/* Image upload trigger */}
-                  <label className="absolute bottom-1 right-1 bg-indigo-500 text-white p-2 rounded-full cursor-pointer hover:bg-indigo-600 shadow transition">
+                  <label className="absolute bottom-1 right-1 bg-sky-700 text-white p-2 rounded-full cursor-pointer hover:bg-sky-800 shadow transition">
                     <Pencil size={14} />
                     <input
                       type="file"
@@ -182,7 +182,7 @@ const AdminProfile = () => {
                     {profile?.phone && (
                       <p className="text-gray-400 text-sm mt-0.5">📞 {profile.phone}</p>
                     )}
-                    <p className="text-sm text-indigo-500 font-medium mt-1 capitalize">
+                    <p className="text-sm text-sky-700 font-medium mt-1 capitalize">
                       🛡 {profile?.role}
                     </p>
                     <p className="text-xs text-gray-400 mt-0.5">
@@ -199,8 +199,8 @@ const AdminProfile = () => {
                     ))
                   ) : (
                     <>
-                      <div className="bg-indigo-50 p-4 rounded-xl text-center">
-                        <h3 className="text-xl font-bold text-indigo-600">
+                      <div className="bg-sky-50 p-4 rounded-xl text-center">
+                        <h3 className="text-xl font-bold text-sky-800">
                           {stats.managedItems ?? 0}
                         </h3>
                         <p className="text-xs text-gray-500 mt-1">Managed Items</p>
@@ -211,8 +211,8 @@ const AdminProfile = () => {
                         </h3>
                         <p className="text-xs text-gray-500 mt-1">Approved Claims</p>
                       </div>
-                      <div className="bg-yellow-50 p-4 rounded-xl text-center">
-                        <h3 className="text-xl font-bold text-yellow-500">
+                      <div className="bg-orange-50 p-4 rounded-xl text-center">
+                        <h3 className="text-xl font-bold text-orange-500">
                           {yearsActive} yr{yearsActive > 1 ? "s" : ""}
                         </h3>
                         <p className="text-xs text-gray-500 mt-1">Experience</p>
@@ -227,7 +227,7 @@ const AdminProfile = () => {
           {/* ── Edit Profile Form ── */}
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow p-8">
             <div className="flex items-center gap-2 mb-6">
-              <Pencil size={20} className="text-indigo-500" />
+              <Pencil size={20} className="text-sky-700" />
               <h2 className="text-xl font-semibold text-gray-700">Edit Profile</h2>
             </div>
 
@@ -242,7 +242,7 @@ const AdminProfile = () => {
                     value={profileForm.firstname}
                     onChange={(e) => setProfileForm((f) => ({ ...f, firstname: e.target.value }))}
                     placeholder="First name"
-                    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                   />
                 </div>
                 <div>
@@ -254,7 +254,7 @@ const AdminProfile = () => {
                     value={profileForm.lastname}
                     onChange={(e) => setProfileForm((f) => ({ ...f, lastname: e.target.value }))}
                     placeholder="Last name"
-                    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                   />
                 </div>
               </div>
@@ -268,7 +268,7 @@ const AdminProfile = () => {
                   value={profileForm.phone}
                   onChange={(e) => setProfileForm((f) => ({ ...f, phone: e.target.value }))}
                   placeholder="+91 9876543210"
-                  className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                  className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                 />
               </div>
 
@@ -288,7 +288,7 @@ const AdminProfile = () => {
               <button
                 type="submit"
                 disabled={isUpdating}
-                className="px-6 py-3 bg-linear-to-r from-indigo-600 to-purple-600 text-white rounded-xl shadow hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm font-medium"
+                className="px-6 py-3 bg-linear-to-r from-sky-800 to-sky-900 text-white rounded-xl shadow hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm font-medium"
               >
                 {isUpdating ? "Saving…" : "Save Changes"}
               </button>
@@ -317,7 +317,7 @@ const AdminProfile = () => {
                     value={pwForm[key]}
                     onChange={(e) => setPwForm((f) => ({ ...f, [key]: e.target.value }))}
                     placeholder={placeholder}
-                    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+                    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
                   />
                 </div>
               ))}

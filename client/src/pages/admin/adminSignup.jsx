@@ -51,10 +51,10 @@ export default function AdminSignup() {
   }, [isError]);
 
   const inputCls =
-    "w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-indigo-400 bg-white disabled:opacity-50 transition";
+    "w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-sky-600 bg-white disabled:opacity-50 transition";
 
   return (
-    <div className="flex min-h-screen bg-linear-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-linear-to-br from-sky-50 to-sky-100">
       <AdminNavbar />
       <AdminSidebar />
 
@@ -65,7 +65,7 @@ export default function AdminSignup() {
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden">
 
             {/* Header strip */}
-            <div className="bg-linear-to-r from-indigo-600 to-purple-600 px-6 py-5 text-center">
+            <div className="bg-linear-to-r from-sky-800 to-sky-900 px-6 py-5 text-center">
               <h1 className="text-xl md:text-2xl font-bold text-white">
                 🛡 Create Admin Account
               </h1>
@@ -159,7 +159,7 @@ export default function AdminSignup() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 bg-linear-to-r from-indigo-500 to-purple-500 text-white rounded-xl font-semibold text-sm hover:opacity-90 transition disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-indigo-200"
+                  className="w-full py-3 bg-linear-to-r from-sky-700 to-sky-800 text-white rounded-xl font-semibold text-sm hover:opacity-90 transition disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-sky-200"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
@@ -177,7 +177,7 @@ export default function AdminSignup() {
                 {/* Footer link */}
                 <p className="text-center text-sm text-gray-500">
                   Already have an account?{" "}
-                  <Link to="/login" className="text-indigo-500 hover:underline font-medium">
+                  <Link to="/login" className="text-sky-700 hover:underline font-medium">
                     Login
                   </Link>
                 </p>

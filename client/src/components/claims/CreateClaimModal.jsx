@@ -81,7 +81,7 @@ const CreateClaimModal = ({ match, onClose }) => {
 
           <button
             disabled={isPending}
-            className="w-full bg-indigo-600 text-white py-2 rounded"
+            className="w-full bg-sky-800 text-white py-2 rounded"
           >
             {isPending ? "Submitting..." : "Submit Claim"}
           </button>

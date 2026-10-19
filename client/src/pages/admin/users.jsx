@@ -17,7 +17,7 @@ function Avatar({ user }) {
   }
   const initials = `${user.firstname?.[0] ?? ""}${user.lastname?.[0] ?? ""}`.toUpperCase();
   return (
-    <div className="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold shrink-0">
+    <div className="w-8 h-8 rounded-full bg-sky-700 text-white flex items-center justify-center text-xs font-bold shrink-0">
       {initials}
     </div>
   );
@@ -25,7 +25,7 @@ function Avatar({ user }) {
 
 function RoleBadge({ role }) {
   return role === "admin" ? (
-    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-600 border border-indigo-200 whitespace-nowrap">
+    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-200 whitespace-nowrap">
       🛡 Admin
     </span>
   ) : (
@@ -66,7 +66,7 @@ function Paginator({ page, totalPages, onPrev, onNext }) {
       <button
         disabled={page <= 1}
         onClick={onPrev}
-        className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+        className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
       >
         ← Prev
       </button>
@@ -76,7 +76,7 @@ function Paginator({ page, totalPages, onPrev, onNext }) {
       <button
         disabled={page >= totalPages}
         onClick={onNext}
-        className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-indigo-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+        className="px-4 py-2 bg-white rounded-xl shadow text-sm font-medium text-gray-600 hover:bg-sky-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
       >
         Next →
       </button>
@@ -137,7 +137,7 @@ const UsersPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       <AdminNavbar />
       <AdminSidebar />
 
@@ -150,10 +150,10 @@ const UsersPage = () => {
         {/* ── Stats ── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {[
-            { label: "Total Users",   value: summary.total,   color: "text-indigo-600" },
+            { label: "Total Users",   value: summary.total,   color: "text-sky-800" },
             { label: "Active Users",  value: summary.active,  color: "text-green-500"  },
             { label: "Blocked Users", value: summary.blocked, color: "text-red-500"    },
-            { label: "Admins",        value: summary.admins,  color: "text-yellow-500" },
+            { label: "Admins",        value: summary.admins,  color: "text-orange-500" },
           ].map(({ label, value, color }) => (
             <div key={label} className="bg-white/80 backdrop-blur-lg p-4 md:p-5 rounded-2xl shadow text-center">
               {isLoading
@@ -173,13 +173,13 @@ const UsersPage = () => {
               type="text"
               value={searchInput}
               placeholder="🔍 Search by name or email..."
-              className="flex-1 px-3 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+              className="flex-1 px-3 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
             <button
               onClick={handleSearch}
-              className="px-4 py-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 transition text-sm font-medium shrink-0"
+              className="px-4 py-2.5 bg-sky-700 text-white rounded-xl hover:bg-sky-800 transition text-sm font-medium shrink-0"
             >
               Search
             </button>
@@ -190,7 +190,7 @@ const UsersPage = () => {
             <select
               value={roleFilter}
               onChange={(e) => handleFilterChange("role", e.target.value)}
-              className="flex-1 px-3 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+              className="flex-1 px-3 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
             >
               <option value="">All Roles</option>
               <option value="user">User</option>
@@ -200,7 +200,7 @@ const UsersPage = () => {
             <select
               value={blockedFilter}
               onChange={(e) => handleFilterChange("isBlocked", e.target.value)}
-              className="flex-1 px-3 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400 text-sm"
+              className="flex-1 px-3 py-2.5 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600 text-sm"
             >
               <option value="">All Statuses</option>
               <option value="false">Active</option>
@@ -252,7 +252,7 @@ const UsersPage = () => {
                     const isActioning = blockingId === user._id;
                     const isAdmin     = user.role === "admin";
                     return (
-                      <tr key={user._id} className="border-b hover:bg-gray-50 transition">
+                      <tr key={user._id} className="border-b hover:bg-sky-50 transition">
 
                         {/* Name + avatar */}
                         <td className="p-3">
@@ -293,7 +293,7 @@ const UsersPage = () => {
                               onClick={() => handleBlockToggle(user._id)}
                               className={`px-3 py-1.5 rounded-lg text-white text-xs font-medium transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap ${
                                 user.isBlocked
-                                  ? "bg-indigo-500 hover:bg-indigo-600"
+                                  ? "bg-sky-700 hover:bg-sky-800"
                                   : "bg-red-500 hover:bg-red-600"
                               }`}
                             >
@@ -338,7 +338,7 @@ const UsersPage = () => {
                 .map((user) => (
                   <div
                     key={user._id}
-                    className="flex justify-between items-center bg-gray-50 p-3 md:p-4 rounded-xl hover:bg-gray-100 transition gap-3"
+                    className="flex justify-between items-center bg-sky-50 p-3 md:p-4 rounded-xl hover:bg-gray-100 transition gap-3"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <Avatar user={user} />

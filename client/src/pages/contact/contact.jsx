@@ -2,7 +2,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-700 text-white px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-sky-800 to-sky-950 text-white px-6 py-12">
 
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto">
@@ -61,7 +61,7 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full py-2 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-200 transition"
+              className="w-full py-2 bg-white text-sky-800 font-semibold rounded-lg hover:bg-gray-200 transition"
             >
               Send Message
             </button>

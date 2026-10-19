@@ -5,8 +5,8 @@ import Navbar from "../../components/navbar/navbar.jsx";
 
 // ─── STATUS COLORS ─────────────────────────────
 const STATUS_STYLES = {
-  pending: "text-yellow-500",
-  under_review: "text-indigo-500",
+  pending: "text-orange-500",
+  under_review: "text-sky-700",
   approved: "text-green-500",
   rejected: "text-red-500",
   completed: "text-emerald-500",
@@ -40,7 +40,7 @@ const MyClaims = () => {
   const claims = data?.data ?? data ?? [];
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       <Navbar />
 
       <Sidebar />
@@ -110,7 +110,7 @@ const MyClaims = () => {
                 {/* ACTIONS */}
                 <div className="mt-4 flex gap-3">
 
-                  <button className="px-4 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600">
+                  <button className="px-4 py-1 bg-sky-700 text-white rounded hover:bg-sky-800">
                     View Details
                   </button>
 

@@ -15,15 +15,15 @@ const CATEGORY_EMOJI = {
 };
 
 const STATUS_CONFIG = {
-  pending:  { label: "Pending Review", color: "text-amber-600",  bg: "bg-amber-50  border-amber-200",  icon: Clock        },
+  pending:  { label: "Pending Review", color: "text-orange-600",  bg: "bg-orange-50  border-orange-200",  icon: Clock        },
   approved: { label: "Approved",       color: "text-emerald-600",bg: "bg-emerald-50 border-emerald-200",icon: CheckCircle  },
   rejected: { label: "Rejected",       color: "text-red-600",    bg: "bg-red-50    border-red-200",    icon: XCircle      },
-  claimed:  { label: "Claimed",        color: "text-blue-600",   bg: "bg-blue-50   border-blue-200",   icon: CheckCircle  },
-  closed:   { label: "Closed",         color: "text-gray-500",   bg: "bg-gray-50   border-gray-200",   icon: XCircle      },
+  claimed:  { label: "Claimed",        color: "text-sky-800",   bg: "bg-sky-50   border-sky-200",   icon: CheckCircle  },
+  closed:   { label: "Closed",         color: "text-gray-500",   bg: "bg-sky-50   border-gray-200",   icon: XCircle      },
 };
 
 const MATCH_STATUS = {
-  suggested: { label: "Suggested", cls: "bg-purple-100 text-purple-600" },
+  suggested: { label: "Suggested", cls: "bg-sky-100 text-sky-900" },
   accepted:  { label: "Accepted",  cls: "bg-green-100  text-green-600"  },
   rejected:  { label: "Rejected",  cls: "bg-red-100    text-red-500"    },
 };
@@ -46,8 +46,8 @@ function SkeletonDetail() {
 function InfoRow({ icon: Icon, label, value, color = "text-gray-600" }) {
   return (
     <div className="flex items-start gap-3">
-      <div className="mt-0.5 p-2 bg-indigo-50 rounded-lg shrink-0">
-        <Icon size={16} className="text-indigo-500" />
+      <div className="mt-0.5 p-2 bg-sky-50 rounded-lg shrink-0">
+        <Icon size={16} className="text-sky-700" />
       </div>
       <div>
         <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">{label}</p>
@@ -71,10 +71,10 @@ function MatchCard({ match, currentItemId }) {
   return (
     <div
       onClick={() => navigate(`/items/${otherItem._id}`)}
-      className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-2xl hover:border-indigo-300 hover:shadow-md transition cursor-pointer group"
+      className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-2xl hover:border-sky-500 hover:shadow-md transition cursor-pointer group"
     >
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-xl">
+        <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-xl">
           {CATEGORY_EMOJI[otherItem.category] ?? "📦"}
         </div>
         <div>
@@ -84,7 +84,7 @@ function MatchCard({ match, currentItemId }) {
       </div>
       <div className="flex items-center gap-2 shrink-0">
         <div className="text-right">
-          <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+          <span className="text-xs font-bold text-sky-800 bg-sky-50 px-2 py-1 rounded-full">
             {match.matchScore}%
           </span>
           <div className="mt-1">
@@ -93,7 +93,7 @@ function MatchCard({ match, currentItemId }) {
             </span>
           </div>
         </div>
-        <ChevronRight size={16} className="text-gray-300 group-hover:text-indigo-400 transition" />
+        <ChevronRight size={16} className="text-gray-300 group-hover:text-sky-600 transition" />
       </div>
     </div>
   );
@@ -128,7 +128,7 @@ const ItemDetail = () => {
     : "—";
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
       <Sidebar />
 
       <main className="flex-1 p-6 max-w-5xl">
@@ -136,7 +136,7 @@ const ItemDetail = () => {
         {/* ── Back button ── */}
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-500 hover:text-indigo-600 mb-6 transition group"
+          className="flex items-center gap-2 text-gray-500 hover:text-sky-800 mb-6 transition group"
         >
           <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
           <span className="text-sm font-medium">Back</span>
@@ -197,7 +197,7 @@ const ItemDetail = () => {
                         </span>
                       )}
                       {item.verifiedByAdmin && (
-                        <span className="flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 border border-indigo-200">
+                        <span className="flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200">
                           <Shield size={12} /> Verified
                         </span>
                       )}
@@ -242,7 +242,7 @@ const ItemDetail = () => {
                           className="w-10 h-10 rounded-full object-cover"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-sm">
+                        <div className="w-10 h-10 rounded-full bg-sky-700 text-white flex items-center justify-center font-bold text-sm">
                           {item.postedBy.firstname?.[0]?.toUpperCase()}
                         </div>
                       )}
@@ -255,7 +255,7 @@ const ItemDetail = () => {
                       {item.verifiedBy && (
                         <div className="ml-auto text-right">
                           <p className="text-xs text-gray-400">Verified by</p>
-                          <p className="text-sm font-semibold text-indigo-600">
+                          <p className="text-sm font-semibold text-sky-800">
                             {item.verifiedBy.firstname} {item.verifiedBy.lastname}
                           </p>
                         </div>
@@ -270,14 +270,14 @@ const ItemDetail = () => {
             {Array.isArray(item.keywords) && item.keywords.length > 0 && (
               <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow p-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <Tag size={18} className="text-indigo-500" />
+                  <Tag size={18} className="text-sky-700" />
                   <h2 className="font-semibold text-gray-700">Keywords</h2>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {item.keywords.map((kw) => (
                     <span
                       key={kw}
-                      className="px-4 py-1.5 bg-indigo-50 text-indigo-600 text-sm font-medium rounded-full border border-indigo-100 hover:bg-indigo-100 transition"
+                      className="px-4 py-1.5 bg-sky-50 text-sky-800 text-sm font-medium rounded-full border border-sky-100 hover:bg-sky-100 transition"
                     >
                       #{kw}
                     </span>
@@ -290,7 +290,7 @@ const ItemDetail = () => {
             {item.coordinates?.lat && item.coordinates?.lng && (
               <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow p-6">
                 <div className="flex items-center gap-2 mb-2">
-                  <MapPin size={18} className="text-indigo-500" />
+                  <MapPin size={18} className="text-sky-700" />
                   <h2 className="font-semibold text-gray-700">Coordinates</h2>
                 </div>
                 <p className="text-sm text-gray-500">
@@ -303,11 +303,11 @@ const ItemDetail = () => {
             {matches.length > 0 && (
               <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow p-6">
                 <div className="flex items-center gap-2 mb-5">
-                  <Layers size={18} className="text-indigo-500" />
+                  <Layers size={18} className="text-sky-700" />
                   <h2 className="font-semibold text-gray-700">
                     Potential Matches
                   </h2>
-                  <span className="ml-auto text-xs bg-indigo-100 text-indigo-600 font-semibold px-2 py-0.5 rounded-full">
+                  <span className="ml-auto text-xs bg-sky-100 text-sky-800 font-semibold px-2 py-0.5 rounded-full">
                     {matches.length}
                   </span>
                 </div>
@@ -326,13 +326,13 @@ const ItemDetail = () => {
             {/* ── Action Buttons ── */}
             <div className="flex flex-wrap gap-3 pb-6">
               {item.status === "approved" && item.type === "lost" && (
-                <button className="flex-1 sm:flex-none px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-2xl font-semibold hover:opacity-90 transition shadow-lg shadow-indigo-200 text-sm">
+                <button className="flex-1 sm:flex-none px-6 py-3 bg-gradient-to-r from-sky-700 to-sky-800 text-white rounded-2xl font-semibold hover:opacity-90 transition shadow-lg shadow-sky-200 text-sm">
                   🙋 Claim This Item
                 </button>
               )}
               <button
                 onClick={() => navigate(-1)}
-                className="flex-1 sm:flex-none px-6 py-3 bg-white text-gray-600 rounded-2xl font-semibold hover:bg-gray-50 transition border border-gray-200 text-sm"
+                className="flex-1 sm:flex-none px-6 py-3 bg-white text-gray-600 rounded-2xl font-semibold hover:bg-sky-50 transition border border-gray-200 text-sm"
               >
                 ← Go Back
               </button>

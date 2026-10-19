@@ -3,7 +3,7 @@ import AdminSidebar from "../../components/sidebar/adminsidebar";
 
 const LogsPage = () => {
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">
 
       {/* Sidebar */}
       <AdminSidebar />
@@ -20,7 +20,7 @@ const LogsPage = () => {
         <div className="grid md:grid-cols-4 gap-6 mb-8">
 
           <div className="bg-white/80 backdrop-blur-lg p-5 rounded-2xl shadow text-center">
-            <h2 className="text-3xl font-bold text-indigo-600">1,245</h2>
+            <h2 className="text-3xl font-bold text-sky-800">1,245</h2>
             <p className="text-gray-500 mt-2">Total Activities</p>
           </div>
 
@@ -30,7 +30,7 @@ const LogsPage = () => {
           </div>
 
           <div className="bg-white/80 backdrop-blur-lg p-5 rounded-2xl shadow text-center">
-            <h2 className="text-3xl font-bold text-yellow-500">78</h2>
+            <h2 className="text-3xl font-bold text-orange-500">78</h2>
             <p className="text-gray-500 mt-2">Pending Reviews</p>
           </div>
 
@@ -47,10 +47,10 @@ const LogsPage = () => {
           <input
             type="text"
             placeholder="🔍 Search logs..."
-            className="flex-1 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400"
+            className="flex-1 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600"
           />
 
-          <select className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-400">
+          <select className="px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-sky-600">
             <option>All Activities</option>
             <option>User Activity</option>
             <option>Claims</option>
@@ -85,7 +85,7 @@ const LogsPage = () => {
               </div>
             </div>
 
-            <div className="flex gap-4 p-4 bg-blue-50 rounded-xl border-l-4 border-blue-500">
+            <div className="flex gap-4 p-4 bg-sky-50 rounded-xl border-l-4 border-sky-700">
               <div className="text-2xl">📦</div>
               <div>
                 <h3 className="font-semibold text-gray-700">
@@ -100,7 +100,7 @@ const LogsPage = () => {
               </div>
             </div>
 
-            <div className="flex gap-4 p-4 bg-yellow-50 rounded-xl border-l-4 border-yellow-500">
+            <div className="flex gap-4 p-4 bg-orange-50 rounded-xl border-l-4 border-orange-500">
               <div className="text-2xl">⚠</div>
               <div>
                 <h3 className="font-semibold text-gray-700">
@@ -130,7 +130,7 @@ const LogsPage = () => {
               </div>
             </div>
 
-            <div className="flex gap-4 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+            <div className="flex gap-4 p-4 bg-sky-50 rounded-xl border-l-4 border-sky-800">
               <div className="text-2xl">👤</div>
               <div>
                 <h3 className="font-semibold text-gray-700">
