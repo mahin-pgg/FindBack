@@ -31,9 +31,9 @@ export const useRejectClaim = () => {
     mutationFn: rejectClaim,
 
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["myClaims"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["myClaims"] });
+      queryClient.invalidateQueries({ queryKey: ["adminClaims"] });
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
     },
   });
 };

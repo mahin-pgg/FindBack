@@ -22,7 +22,6 @@ async function createClaimProvider(req, res) {
     if (!item) {
       return res.status(404).json({ message: "Item not found" });
     }
-
     // 2. Validate match (optional now)
     if (matchId) {
       const match = await Match.findById(matchId);
@@ -33,10 +32,7 @@ async function createClaimProvider(req, res) {
         });
       }
 
-      if (
-        !match.lostItemId.equals(itemId) &&
-        !match.foundItemId.equals(itemId)
-      ) {
+      if (!match.lostItemId.equals(itemId) && !match.foundItemId.equals(itemId)) {
         return res.status(400).json({
           message: "Match does not belong to this item",
         });

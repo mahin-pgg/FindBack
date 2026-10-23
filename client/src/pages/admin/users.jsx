@@ -3,13 +3,14 @@ import AdminSidebar from "../../components/sidebar/adminsidebar";
 import AdminNavbar from "../../components/navbar/Adminnavbar";
 import { useFetchUsers } from "../../hooks/adminHook/useFetchUsers";
 import { useBlockUser } from "../../hooks/useBlockUser.hook.js";
+import { getMediaUrl } from "../../lib/media.js";
 
 // ─── Helpers ──────────────────────────────────────────────────────────
 function Avatar({ user }) {
   if (user.profileImage) {
     return (
       <img
-        src={user.profileImage}
+        src={getMediaUrl(user.profileImage)}
         alt={user.firstname}
         className="w-8 h-8 rounded-full object-cover shrink-0"
       />

@@ -36,9 +36,9 @@ export const useApproveClaim = () => {
     mutationFn: approveClaim,
 
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["myClaims"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["myClaims"] });
+      queryClient.invalidateQueries({ queryKey: ["adminClaims"] });
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
     },
   });
 };

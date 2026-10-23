@@ -43,6 +43,7 @@ export const useCreateClaim = () => {
       queryClient.invalidateQueries({
         queryKey: ["myMatches"],
       });
+      queryClient.invalidateQueries({ queryKey: ["adminClaims"] });
     },
   });
 };

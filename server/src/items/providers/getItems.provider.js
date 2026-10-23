@@ -105,7 +105,7 @@ async function getItemsProvider(req, res) {
         .sort(sort)
         .skip(skip)
         .limit(limitNumber)
-        .populate("postedBy", "name email"),
+        .populate("postedBy", "firstname lastname email profileImage"),
 
       Item.countDocuments(filter),
     ]);

@@ -13,7 +13,6 @@ const claimRouter = express.Router();
 claimRouter.post(
   "/claims",
   authenticateToken,
-  requireRole("admin"),
   createClaimValidator,            // validation
   (req, res) => {
     const result = validationResult(req);
@@ -31,7 +30,6 @@ claimRouter.post(
 claimRouter.get(
   "/claims/my",
   authenticateToken,
-  requireRole("admin"),
   getMyClaimsValidator,            // validation
   (req, res) => {
     const result = validationResult(req);
@@ -49,6 +47,7 @@ claimRouter.get(
 claimRouter.patch(
   "/claims/:id/approve",
   authenticateToken,              // auth first
+  requireRole("admin"),
   reviewClaimValidator,            // validation
   (req, res) => {
     const result = validationResult(req);
@@ -66,6 +65,7 @@ claimRouter.patch(
 claimRouter.patch(
   "/claims/:id/reject",
   authenticateToken,              // auth first
+  requireRole("admin"),
   reviewClaimValidator,            // validation
   (req, res) => {
     const result = validationResult(req);

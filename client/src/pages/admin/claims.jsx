@@ -4,6 +4,7 @@ import AdminNavbar from "../../components/navbar/Adminnavbar.jsx";
 import { useGetClaims } from "../../hooks/adminHook/useFetchClaims.hook";
 import { useApproveClaim } from "../../hooks/claimsHook/useApproveClaim.hook";
 import { useRejectClaim } from "../../hooks/claimsHook/useRejectClaim.hook";
+import { getMediaUrl } from "../../lib/media.js";
 
 const ClaimsPage = () => {
   const { data, isLoading, error } = useGetClaims();
@@ -204,6 +205,17 @@ const [reviewNote, setReviewNote] = React.useState("");
           ? "Approve Claim"
           : "Reject Claim"}
       </h2>
+
+      {[['Lost report', selectedClaim.matchId?.lostItemId], ['Found report', selectedClaim.matchId?.foundItemId || selectedClaim.itemId]].map(([label, item]) => item && (
+        <section key={label} className="mb-4 rounded-xl border p-3">
+          <h3 className="font-semibold">{label}: {item.title}</h3>
+          {item.imageURL && <img src={getMediaUrl(item.imageURL)} alt={item.title} className="my-2 h-36 w-full rounded-lg object-cover" />}
+          <p className="text-sm">{item.description}</p>
+          <p className="text-xs text-gray-500">{item.location} · {item.category} · {item.type}</p>
+        </section>
+      ))}
+
+      <p className="mb-3 text-sm">Claimed by {selectedClaim.claimedBy?.firstname || "User"} {selectedClaim.claimedBy?.lastname || ""} · {selectedClaim.contactInfo}</p>
 
       <textarea
         value={reviewNote}

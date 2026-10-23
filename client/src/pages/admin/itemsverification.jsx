@@ -3,6 +3,7 @@ import AdminSidebar from "../../components/sidebar/adminsidebar";
 import AdminNavbar from "../../components/navbar/Adminnavbar.jsx";
 import { useFetchAdminItems } from "../../hooks/adminHook/useFetchAdminItems";
 import { useVerifyItem } from "../../hooks/adminHook/useVerifyItem.hook";
+import { getMediaUrl } from "../../lib/media.js";
 
 // ─── Category maps — schema enum exactly ─────────────────────────────
 // "wallet" | "phone" | "bag" | "id" | "electronics" | "others"
@@ -87,7 +88,7 @@ function ItemCard({ item, onApprove, onReject, isApprovingId, isRejectingId }) {
         <div className="flex gap-5">
           {item.imageURL ? (
             <img
-              src={`/${item.imageURL.replace(/\\/g, "/")}`}
+              src={getMediaUrl(item.imageURL)}
               alt={item.title}
               className="w-24 h-24 shrink-0 rounded-xl object-cover shadow"
             />

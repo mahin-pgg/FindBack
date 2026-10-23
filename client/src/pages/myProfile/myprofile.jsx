@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/sidebar.jsx";
 import Navbar from "../../components/navbar/navbar.jsx";
 import { UserRound, Pencil, Lock, CheckCircle, XCircle } from "lucide-react";
 import { useGetProfile, useUpdateProfile, useUpdatePassword } from "../../hooks/usersHook/useProfile.js";
+import { getMediaUrl } from "../../lib/media.js";
 
 // ─── Toast notification ───────────────────────────────────────────────
 function Toast({ message, type, onClose }) {
@@ -112,7 +113,7 @@ const MyProfile = () => {
     );
   };
 
-  const avatarSrc = previewImage || profile?.profileImage || null;
+  const avatarSrc = previewImage || getMediaUrl(profile?.profileImage);
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-sky-100">

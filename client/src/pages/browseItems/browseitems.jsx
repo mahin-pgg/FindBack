@@ -60,6 +60,11 @@ function ItemCard({ item, navigate }) {
       </p>
 
       <div className="text-sm text-gray-400 space-y-0.5">
+        <p className="text-gray-600">
+          👤 Reported by {item.postedBy
+            ? [item.postedBy.firstname, item.postedBy.lastname].filter(Boolean).join(" ") || item.postedBy.name || "Unknown reporter"
+            : "Unknown reporter"}
+        </p>
         {item.location && <p>📍 {item.location}</p>}
         <p>🗓 {itemDate}</p>
         <p className="capitalize">🏷 {item.category}</p>

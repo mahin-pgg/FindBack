@@ -5,6 +5,7 @@ import Sidebar from "../../components/sidebar/sidebar.jsx";
 import Navbar from "../../components/navbar/Navbar.jsx";
 import { UserRound, Compass, BaggageClaim, Search } from "lucide-react";
 import { useUserDashboard } from "../../hooks/usersHook/useUserDashboard.js";
+import { getMediaUrl } from "../../lib/media.js";
 
 const CATEGORY_EMOJI = {
   wallet: "👛", phone: "📱", bag: "🎒",
@@ -310,7 +311,7 @@ const Dashboard = () => {
             <div className="flex items-center gap-4">
               {profile?.profileImage ? (
                 <img
-                  src={profile.profileImage}
+                  src={getMediaUrl(profile.profileImage)}
                   alt={profile.firstname}
                   className="w-14 h-14 rounded-full object-cover shrink-0"
                 />

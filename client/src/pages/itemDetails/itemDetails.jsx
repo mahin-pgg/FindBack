@@ -7,6 +7,7 @@ import {
   Shield, Flag, CheckCircle, Clock, XCircle,
   Layers, ChevronRight
 } from "lucide-react";
+import { getMediaUrl } from "../../lib/media.js";
 
 // ─── Constants ────────────────────────────────────────────────────────
 const CATEGORY_EMOJI = {
@@ -104,6 +105,7 @@ const ItemDetail = () => {
   const { id }       = useParams();
   const navigate     = useNavigate();
   const [imgError, setImgError] = useState(false);
+  const [reporterImageError, setReporterImageError] = useState(false);
 
   const { data, isLoading, isError, error } = useGetItemById(id);
 
@@ -159,7 +161,7 @@ const ItemDetail = () => {
                 <div className="lg:w-2/5 shrink-0">
                   {item.imageURL && !imgError ? (
                     <img
-                      src={`http://127.0.0.1:3001/${item.imageURL.replace(/\\/g, "/")}`}
+                      src={getMediaUrl(item.imageURL)}
                       alt={item.title}
                       onError={() => setImgError(true)}
                       className="w-full h-64 lg:h-full object-cover"
@@ -235,10 +237,11 @@ const ItemDetail = () => {
                   {/* Reporter */}
                   {item.postedBy && (
                     <div className="mt-6 pt-5 border-t border-gray-100 flex items-center gap-3">
-                      {item.postedBy.profileImage ? (
+                      {item.postedBy.profileImage && !reporterImageError ? (
                         <img
-                          src={item.postedBy.profileImage}
+                          src={getMediaUrl(item.postedBy.profileImage)}
                           alt={item.postedBy.firstname}
+                          onError={() => setReporterImageError(true)}
                           className="w-10 h-10 rounded-full object-cover"
                         />
                       ) : (

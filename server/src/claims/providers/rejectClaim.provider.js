@@ -1,6 +1,7 @@
 // providers/rejectClaim.provider.js
 
 const Claim = require("../claims.schema");
+const Notification = require("../../models/notifications.schema");
 
 async function rejectClaimProvider(req, res) {
   try {
@@ -26,6 +27,15 @@ async function rejectClaimProvider(req, res) {
     claim.resolvedAt = new Date();
 
     await claim.save();
+
+    await Notification.create({
+      userId: claim.claimedBy,
+      type: "claim_update",
+      title: "Claim rejected",
+      message: claim.reviewNote,
+      relatedItemId: claim.itemId,
+      groupKey: `claim_${claim._id}`,
+    }).catch((error) => console.error("Claim notification failed", error));
 
     return res.json({
       message: "Claim rejected",

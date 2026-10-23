@@ -73,6 +73,7 @@ export function useVerifyItem() {
 
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["adminItems"] });
+      queryClient.invalidateQueries({ queryKey: ["items"] });
     },
   });
 }

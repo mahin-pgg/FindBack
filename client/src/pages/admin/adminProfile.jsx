@@ -7,6 +7,7 @@ import {
   useUpdateProfile,
   useUpdatePassword,
 } from "../../hooks/usersHook/useProfile.js";
+import { getMediaUrl } from "../../lib/media.js";
 
 // ─── Toast ────────────────────────────────────────────────────────────
 function Toast({ message, type, onClose }) {
@@ -102,7 +103,7 @@ const AdminProfile = () => {
     });
   };
 
-  const avatarSrc      = previewImage || profile?.profileImage || null;
+  const avatarSrc      = previewImage || getMediaUrl(profile?.profileImage);
   const initials       = `${profile?.firstname?.[0] ?? ""}${profile?.lastname?.[0] ?? ""}`.toUpperCase();
 
   // member since — years of experience
